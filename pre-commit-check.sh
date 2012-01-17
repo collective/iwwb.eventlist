@@ -9,10 +9,8 @@ for pt in `find src/iwwb/eventlist/ -name "*.pt"` ; do bin/zptlint $pt; done
 echo '====== Running PyFlakes ======'
 bin/pyflakes src/iwwb/eventlist
 bin/pyflakes setup.py
-bin/pyflakes fabfile.py
 
 echo '====== Running pep8 =========='
 bin/pep8 --ignore=E501 src/iwwb/eventlist
 bin/pep8 --ignore=E501 setup.py
-bin/pep8 --ignore=E501 fabfile.py
 

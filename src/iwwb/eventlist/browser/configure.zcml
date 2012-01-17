@@ -4,4 +4,13 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="iwwb.eventlist">
 
+  <!-- Register the view for listing events  -->
+  <browser:page
+    name="eventlist"
+    for="*"
+    class=".eventlist.ListEventsView"
+    permission="zope2.View"
+    layer="iwwb.eventlist.interfaces.IIwwbEventlistLayer"
+    />
+    
 </configure>
