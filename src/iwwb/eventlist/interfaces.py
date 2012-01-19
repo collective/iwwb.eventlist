@@ -7,8 +7,14 @@ from zope.interface import Interface
 from zope import schema
 
 
-class IIwwbEventlistLayer(IDefaultPloneLayer):
+class IIWWBEventlistLayer(IDefaultPloneLayer):
     """Marker interface that defines a Zope 3 browser layer."""
+
+
+class IIWWBSearcher(Interface):
+    """Interface for the utility for handling communication with the IWWB web
+    service.
+    """
 
 
 class IListEventsForm(Interface):

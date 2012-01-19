@@ -24,4 +24,10 @@
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 
+    <!-- Register the utility for communication with the IWWB web service -->
+    <utility
+        factory=".searcher.IWWBSearcher"
+        provides=".interfaces.IIWWBSearcher"
+        />
+
 </configure>

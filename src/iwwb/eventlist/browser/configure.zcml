@@ -10,7 +10,7 @@
     for="*"
     class=".eventlist.ListEventsView"
     permission="zope2.View"
-    layer="iwwb.eventlist.interfaces.IIwwbEventlistLayer"
+    layer="iwwb.eventlist.interfaces.IIWWBEventlistLayer"
     />
     
 </configure>

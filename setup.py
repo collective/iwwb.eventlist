@@ -37,6 +37,7 @@ setup(name='iwwb.eventlist',
       install_requires=[
           # list project dependencies
           'setuptools',
+          'lxml',
       ],
       extras_require={
           # list libs needed for unittesting this project
