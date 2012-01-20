@@ -19,6 +19,50 @@
     </div>
 
     <div class="visualClear"></div>
+    
+    <h2 i18n:translate="">
+      Results
+    </h2>
+    
+    <tal:results tal:define="events options/events">
+        <ul id="results" tal:condition="events">
+            <li class="result-item" tal:repeat="event events">
+                <div class="result-item-field">
+                    <b i18n:translate="">Title:</b>
+                    <span tal:content="event/Title"/>
+                </div>
+                <div class="result-item-field">
+                    <b i18n:translate="">Type:</b>
+                    <span tal:content="python: view.get_event_type(event.Type)"/>
+                 </div>
+                <div class="result-item-field">
+                    <b i18n:translate="">City:</b>
+                    <span tal:content="event/City" />
+                 </div>
+                <div class="result-item-field">
+                    <b i18n:translate="">Start date:</b>
+                    <!--span tal:content="event/StartTime"/-->
+                 </div>
+                <div class="result-item-field">
+                    <b i18n:translate="">Training Supplier:</b>
+                    <a tal:content="event/TrainingSupplier"
+                       tal:attributes="href event/TrainingSupplierUrl">
+                       Training Supplier
+                    </a>
+                 </div>
+                <div class="result-item-field">
+                    <b i18n:translate="">Database Supplier:</b>
+                    <a tal:content="event/DatabaseSupplier"
+                       tal:attributes="href event/DatabaseSupplierURL">
+                       Database Supplier
+                    </a>
+                </div>
+            </li>
+        </ul>
+        <p tal:condition="python: not events" i18n:translate="">
+            There are no results to display.
+        </p>
+    </tal:results>
   </metal:main>
 </metal:main>
 

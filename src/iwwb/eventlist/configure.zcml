@@ -30,4 +30,13 @@
         provides=".interfaces.IIWWBSearcher"
         />
 
+    <!-- Register vocabularies -->
+    <utility
+        component=".vocabularies.EventTypesVocabularyFactory"
+        name="iwwb.eventlist.vocabularies.EventTypes"
+        />
+    <utility
+        component=".vocabularies.SortOptionsVocabularyFactory"
+        name="iwwb.eventlist.vocabularies.SortOptions"
+        />
 </configure>
