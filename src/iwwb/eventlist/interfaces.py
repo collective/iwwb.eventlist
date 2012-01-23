@@ -4,6 +4,8 @@
 from iwwb.eventlist import _
 from plone.theme.interfaces import IDefaultPloneLayer
 from zope.interface import Interface
+from zope.interface import Invalid
+from zope.interface import invariant
 from zope import schema
 
 
@@ -15,6 +17,13 @@ class IIWWBSearcher(Interface):
     """Interface for the utility for handling communication with the IWWB web
     service.
     """
+
+
+def check_year_constraint(value):
+    """Check that the year entered is not too low or too high."""
+    if value.year < 1000 or value.year > 9999:
+        raise Invalid(_(u"The year entered is not valid."))
+    return True
 
 
 class IListEventsForm(Interface):
@@ -35,10 +44,11 @@ class IListEventsForm(Interface):
         description=_(u'Enter the city.'),
         required=False,
     )
-    startTime = schema.Date(
+    startDate = schema.Date(
         title=_(u'Event start'),
-        description=_(u'Enter the event start date.'),
+        description=_(u'Enter the earliest event start date.'),
         required=False,
+        constraint=check_year_constraint,
     )
     startTimeRequired = schema.Bool(
         title=_(u'Only events with start date'),
@@ -60,4 +70,13 @@ class IListEventsForm(Interface):
         default='Datum',
     )
 
-IWWB_SEARCHABLE_FIELDS = ('query', 'city', 'startTime', 'type', 'sort',)
+    @invariant
+    def check_enough_data_provided(obj):
+        """Check that the user has provided enough data to perform the query."""
+        if not (obj.query or obj.city or obj.startDate):
+            raise Invalid(
+                    _("You have to fill out at least one additional field \
+                    (Keywords, City or Even Start)"))
+
+
+IWWB_SEARCHABLE_FIELDS = ('query', 'city', 'startDate', 'type', 'sort',)
