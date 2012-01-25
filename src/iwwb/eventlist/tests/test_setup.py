@@ -26,10 +26,10 @@ class TestSetup(IntegrationTestCase):
 
     # browserlayer.xml
     def test_browserlayer(self):
-        """Test that IIwwbEventlistLayer is registered."""
-        from iwwb.eventlist.interfaces import IIwwbEventlistLayer
+        """Test that IIWWBEventlistLayer is registered."""
+        from iwwb.eventlist.interfaces import IIWWBEventlistLayer
         from plone.browserlayer import utils
-        self.failUnless(IIwwbEventlistLayer in utils.registered_layers())
+        self.failUnless(IIWWBEventlistLayer in utils.registered_layers())
 
 
 def test_suite():

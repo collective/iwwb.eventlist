@@ -24,4 +24,19 @@
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 
+    <!-- Register the utility for communication with the IWWB web service -->
+    <utility
+        factory=".searcher.IWWBSearcher"
+        provides=".interfaces.IIWWBSearcher"
+        />
+
+    <!-- Register vocabularies -->
+    <utility
+        component=".vocabularies.EventTypesVocabularyFactory"
+        name="iwwb.eventlist.vocabularies.EventTypes"
+        />
+    <utility
+        component=".vocabularies.SortOptionsVocabularyFactory"
+        name="iwwb.eventlist.vocabularies.SortOptions"
+        />
 </configure>
