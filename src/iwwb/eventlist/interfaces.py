@@ -34,11 +34,14 @@ class IListEventsForm(Interface):
         description=_(u'Enter the search keywords.'),
         required=False,
     )
-    allWords = schema.Bool(
-        title=_(u'All keywords'),
-        description=_(u'Select this if you want to search for all keywords.'),
-        required=False,
-    )
+    # Doesn't work ATM
+    #===========================================================================
+    # allWords = schema.Bool(
+    #    title=_(u'All keywords'),
+    #    description=_(u'Select this if you want to search for all keywords.'),
+    #    required=False,
+    # )
+    #===========================================================================
     city = schema.TextLine(
         title=_(u'City'),
         description=_(u'Enter the city.'),
@@ -50,12 +53,15 @@ class IListEventsForm(Interface):
         required=False,
         constraint=check_year_constraint,
     )
-    startTimeRequired = schema.Bool(
-        title=_(u'Only events with start date'),
-        description=_(u'If the event does not have the date information it '
-                      'will not be listed.'),
-        required=False,
-    )
+    # Doesn't work ATM
+    #===========================================================================
+    # startTimeRequired = schema.Bool(
+    #    title=_(u'Only events with start date'),
+    #    description=_(u'If the event does not have the date information it '
+    #                  'will not be listed.'),
+    #    required=False,
+    # )
+    #===========================================================================
     type = schema.Choice(
         title=_(u'Event type'),
         description=_(u'Select the event type.'),
@@ -67,7 +73,7 @@ class IListEventsForm(Interface):
         title=_(u'Sort by'),
         vocabulary='iwwb.eventlist.vocabularies.SortOptions',
         required=False,
-        default='Datum',
+        default='startTime',
     )
 
     @invariant

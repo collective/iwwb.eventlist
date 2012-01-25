@@ -40,9 +40,9 @@ class SortOptionsVocabulary(object):
                 'Treffergenauigkeit',
                 _(u'Treffergenauigkeit')
             ),
-            SimpleTerm('Ort', 'Ort', _(u'Ort')),
-            SimpleTerm('PLZ', 'PLZ', _(u'PLZ')),
-            SimpleTerm('Datum', 'Datum', _(u'Datum')),
+            SimpleTerm('city', 'city', _(u'Ort')),
+            SimpleTerm('zip', 'zip', _(u'PLZ')),
+            SimpleTerm('startTime', 'startTime', _(u'Datum')),
         ]
 
         return SimpleVocabulary(items)
