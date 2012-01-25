@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """The List Events view."""
 
+from datetime import date
 from iwwb.eventlist import _
 from iwwb.eventlist.interfaces import IListEventsForm
 from iwwb.eventlist.interfaces import IIWWBSearcher
@@ -71,9 +72,12 @@ class ListEventsView(BrowserView):
         # Hide the editable border and tabs
         self.request.set('disable_border', True)
 
+        if not self.request.form or self.request.form.get('form.buttons.reset'):
+            return self.index()
+
         # Prepare display values for the template
         options = {
-            'events': self.get_events(),
+            'events': self.events(),
         }
         return self.index(**options)
 
@@ -83,7 +87,7 @@ class ListEventsView(BrowserView):
         """
         self.form_wrapper.form_instance.update()
 
-    def get_events(self):
+    def events(self):
         """Get the events for the provided parameters using the IIWWBSearcher
         utility.
         """
@@ -92,12 +96,9 @@ class ListEventsView(BrowserView):
 
         try:
             searcher = getUtility(IIWWBSearcher)
-            # XXX: Temporarily set to a low number
-            searcher.results_per_page = 100
             if querydict:
-                querydict['page'] = 1
                 results = querydict and searcher.get_results(querydict)
-                results = self._filter_results(results)
+                #results = self._filter_results(results)
         except:
             messages = IStatusMessage(self.request)
             messages.addStatusMessage(u"There was an error getting the \
@@ -106,7 +107,7 @@ class ListEventsView(BrowserView):
 
         return results
 
-    def get_event_type(self, type_id):
+    def event_type(self, type_id):
         """Get event type title for the provided event type id."""
         factory = getUtility(
             IVocabularyFactory,
@@ -124,20 +125,21 @@ class ListEventsView(BrowserView):
             if field == 'query':
                 value = self.request.get('form.widgets.query')
                 if value:
-                    #words = ['words:' + word for word in value.split()]
                     words = value.split()
                     search_all_words = self.request.get('form.widgets.allWords')
                     if search_all_words:
                         querydict[field] = " AND ".join(words)
                     else:
-                        querydict[field] = " OR ".join(words)
+                        # If no operator is specified it searches for all the
+                        # words (XXX: OR operator doesn't work as expected?)
+                        querydict[field] = words
             elif field == 'startDate':
                 year = self.request.get('form.widgets.startDate-year')
                 month = self.request.get('form.widgets.startDate-month')
-                day = self.request.get('form.widgets.startDate-day')
-                if year and month and day:
-                    date = {'year': year, 'month': month, 'day': day}
-                    querydict[field] = self._format_date(date)
+                day = self.request.get('form.widgets.startDate-day') or '1'
+                if year and month:
+                    startDate = date(int(year), int(month), int(day))
+                    querydict[field] = startDate.isoformat()
             else:
                 value = self.request.get('form.widgets.%s' % field)
                 if value:
@@ -149,21 +151,11 @@ class ListEventsView(BrowserView):
 
         return querydict
 
-    def _format_date(self, date):
-        """Utility function to convert a date, because IWWB service is very
-        strict about the format (accepts a date in format 2011-01-01, but
-        rejects a date in format 2011-1-1).
-        """
-        if len(date['month']) == 1:
-            date['month'] = '0' + date['month']
-        if len(date['day']) == 1:
-            date['day'] = '0' + date['day']
-
-        return "%s-%s-%s" % (date['year'], date['month'], date['day'])
-
-    def _filter_results(self, results):
-        """Additional filtering of results, not possible with the IWWB api."""
-        if self.request.get('form.widgets.startTimeRequired'):
-            return [res for res in results if hasattr(res, 'startTime')]
-        else:
-            return results
+    #===========================================================================
+    # def _filter_results(self, results):
+    #    """Additional filtering of results, not possible with the IWWB api."""
+    #    if self.request.get('form.widgets.startTimeRequired'):
+    #        return [res for res in results if hasattr(res, 'startTime')]
+    #    else:
+    #        return results
+    #===========================================================================

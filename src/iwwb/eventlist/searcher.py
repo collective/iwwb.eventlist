@@ -9,7 +9,9 @@ import logging
 logger = logging.getLogger('iwwb.eventlist')
 
 WSDL_URL = 'http://www.iwwb.de/wss/sucheIWWBServer.php?wsdl'
-RESULTS_PER_PAGE = 50
+
+# Set maximum results to a low number, otherwise the search takes too long
+RESULTS_PER_PAGE = 1000
 MAX_RESULTS = 1000
 
 
@@ -37,13 +39,16 @@ class IWWBSearcher(object):
             raise Exception(message)
         return client
 
-    def get_results(self, query):
+    def get_results(self, query, page=1):
         """Return results from the IWWB service.
 
         :param query: Dictionary with search parameters and values. For a list
             of possible parameters see:
             http://www.iwwb.de/wss/sucheIWWBServer.php?op=GetFullResult
         :type query: Dictionary
+        :param page: Results page to fetch, defaults to 1. If self.max_results
+            equals self.results_per_page, we fetch all results at once.
+        :type page: int
         :returns: List of search results
         :rtype: SearchResult
         """
@@ -51,7 +56,8 @@ class IWWBSearcher(object):
             results_array = self.client.service.GetFullResult(
                 maxResult=self.max_results,
                 resultPerPage=self.results_per_page,
-                **query
+                page=page,
+                ** query
             )
         except:
             # Many things can go wrong

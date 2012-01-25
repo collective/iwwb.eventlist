@@ -13,4 +13,10 @@
     layer="iwwb.eventlist.interfaces.IIWWBEventlistLayer"
     />
 
+  <!-- Publish static media files -->
+  <browser:resourceDirectory
+    name="iwwb.eventlist"
+    directory="resources"
+    />
+
 </configure>

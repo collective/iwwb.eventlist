@@ -19,16 +19,16 @@ class TestIWWBSearcher(IntegrationTestCase):
 
     def test_get_results_empty(self):
         # Search for events in a city that doesn't exist
-        query = dict(city='FooBar', page='1')
+        query = dict(city='FooBar')
         self.assertEquals(self.searcher.get_results(query), [])
 
     def test_get_results_not_empty(self):
         # This search should return some results
-        query = dict(city='Berlin', page='1')
+        query = dict(city='Berlin')
         self.assertGreater(len(self.searcher.get_results(query)), 0)
 
     def test_get_results_format(self):
-        query = dict(city='Berlin', page='1')
+        query = dict(city='Berlin')
         results = self.searcher.get_results(query)
         result = results[0]
 
@@ -40,7 +40,7 @@ class TestIWWBSearcher(IntegrationTestCase):
 
     def test_get_results_false_parameters(self):
         # Try searching with a nonexistent parameter, the method should fail
-        query = dict(foo='bar', page='1')
+        query = dict(foo='bar')
         try:
             self.searcher.get_results(query)
         except:
