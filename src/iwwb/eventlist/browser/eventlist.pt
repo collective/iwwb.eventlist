@@ -10,6 +10,7 @@
 <metal:css fill-slot="style_slot">
   <link tal:attributes="href string:$portal_url/++resource++jquery.datatables/media/css/demo_table.css" media="screen" type="text/css" rel="stylesheet">
   <link tal:attributes="href string:$portal_url/++resource++jquery.datatables/extras/TableTools/media/css/TableTools.css" media="screen" type="text/css" rel="stylesheet">
+  <link tal:attributes="href string:$portal_url/++resource++iwwb.eventlist/eventlist.css" media="screen" type="text/css" rel="stylesheet">
 </metal:css>
 
 <metal:js fill-slot="javascript_head_slot">
@@ -30,14 +31,14 @@
     </div>
 
     <div class="visualClear"></div>
-    
+
     <h2 i18n:translate="">
       Results
     </h2>
 
     <!-- The id here here must be 'example' because we use dataTable's demo CSS -->
-    <table id="example" class="display" 
-           tal:define="events options/events|nothing" 
+    <table id="example" class="display"
+           tal:define="events options/events|nothing"
            tal:condition="events">
       <thead>
         <tr>
@@ -57,14 +58,14 @@
             <td tal:content="event/StartTime|nothing">Start date</td>
             <td>
                 <a tal:content="event/TrainingSupplier|nothing"
-                       tal:attributes="href event/TrainingSupplierUrl|nothing">
-                       Training Supplier
+                   tal:attributes="href event/TrainingSupplierUrl|nothing">
+                  Training Supplier
                 </a>
             </td>
             <td>
                 <a tal:content="event/DatabaseSupplier|nothing"
-                       tal:attributes="href event/DatabaseSupplierURL|nothing">
-                       Database Supplier
+                   tal:attributes="href event/DatabaseSupplierURL|nothing">
+                  Database Supplier
                 </a>
             </td>
         </tr>

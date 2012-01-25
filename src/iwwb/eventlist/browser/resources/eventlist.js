@@ -7,6 +7,7 @@ $(document).ready(function(){
             "sSwfPath": portal_url + "/++resource++jquery.datatables/extras/TableTools/media/swf/copy_cvs_xls.swf",
             aButtons: [ "copy", "csv", "xls"]
         },
-        "sPaginationType": "full_numbers"
+        "sPaginationType": "full_numbers",
+        "iDisplayLength": 25
     });
 });
