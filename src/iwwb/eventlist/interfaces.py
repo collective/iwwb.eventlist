@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """Module where all interfaces, events and exceptions live."""
 
+from datetime import date
+from datetime import timedelta
 from iwwb.eventlist import _
 from plone.theme.interfaces import IDefaultPloneLayer
 from zope.interface import Interface
@@ -48,9 +50,17 @@ class IListEventsForm(Interface):
         required=False,
     )
     startDate = schema.Date(
-        title=_(u'Event start'),
+        title=_(u'Date start'),
         description=_(u'Enter the earliest event start date.'),
         required=False,
+        default=date.today(),
+        constraint=check_year_constraint,
+    )
+    endDate = schema.Date(
+        title=_(u'Date end'),
+        description=_(u'Enter the latest event start date.'),
+        required=False,
+        default=date.today() + timedelta(7),
         constraint=check_year_constraint,
     )
     # Doesn't work ATM
@@ -85,4 +95,4 @@ class IListEventsForm(Interface):
                     (Keywords, City or Even Start)"))
 
 
-IWWB_SEARCHABLE_FIELDS = ('query', 'city', 'startDate', 'type', 'sort',)
+IWWB_SEARCHABLE_FIELDS = ('query', 'city', 'startDate', 'endDate', 'type', 'sort',)
