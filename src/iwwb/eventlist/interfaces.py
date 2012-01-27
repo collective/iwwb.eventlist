@@ -27,7 +27,7 @@ class IListEventsForm(Interface):
 
     query = schema.TextLine(
         title=_(u'Keywords'),
-        descrption=_(u'Enter the search keywords. Examples: Seminar, Excel, ' \
+        description=_(u'Enter the search keywords. Examples: Seminar, Excel, ' \
             'Berlin, etc.'),
         required=False,
     )
