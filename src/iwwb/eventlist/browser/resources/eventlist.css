@@ -9,27 +9,32 @@
     padding: 0px 5px;
 }
 #eventlist-form .formControls input {
-    min-width: 100px;
+    cursor:pointer;
 }
 
 #eventlist-form .field,
 #eventlist-form .formControls {
     float: left;
     clear: none;
-    width: 40%;
+    width: 35%;
     min-width: 390px;
 }
 
 #eventlist-form .formControls {
-    width: 100px;
+    margin-top: 50px;
     min-width: 100px;
-    margin-top: 69px;
+    width: 25%;
+}
+
+#eventlist-form .button-field{
+    padding: 0.4em 1.3em;
 }
 
 #eventlist-form .formControls #form-buttons-reset {
     background: transparent;
     border: none;
     cursor: pointer;
+    padding-left: 0.3em;
 }
 
 #eventlist-form .fieldErrorBox {
