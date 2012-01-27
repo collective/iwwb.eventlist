@@ -26,7 +26,7 @@
       List events
     </h1>
 
-    <div id="listevents-form">
+    <div id="eventlist-form">
       <form tal:replace="structure view/form_wrapper" />
     </div>
 

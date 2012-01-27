@@ -18,5 +18,8 @@
     name="iwwb.eventlist"
     directory="resources"
     />
+  <adapter
+    factory=".eventlist.TextLineFieldDataConverter"
+    />
 
 </configure>

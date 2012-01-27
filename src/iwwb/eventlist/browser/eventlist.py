@@ -13,12 +13,41 @@ from Products.statusmessages.interfaces import IStatusMessage
 from z3c.form import button
 from z3c.form import field
 from z3c.form import form
+from z3c.form.converter import BaseDataConverter
+from z3c.form.interfaces import IWidget
+from zope.component import adapts
 from zope.component import getUtility
+from zope.schema.interfaces import ITextLine
 from zope.schema.interfaces import IVocabularyFactory
 
 import logging
 
 logger = logging.getLogger('iwwb.eventlist')
+
+
+class TextLineFieldDataConverter(BaseDataConverter):
+    """Customized data converter for the TextLine field.
+
+    XXX: We need this because we are getting a WrongType error on TextLine
+    fields - the original converter expects a unicode value, but somehow gets
+    a string.
+    """
+    adapts(ITextLine, IWidget)
+
+    def toFieldValue(self, value):
+        """See z3c.form.interfaces.IDataConverter"""
+
+        if value == u'':
+            return self.field.missing_value
+
+        # XXX: The original converter expects unicode value, but gets normal
+        # string, here we convert the string to unicode first
+        #return self.field.fromUnicode(value)
+        try:
+            value = unicode(value, 'utf-8')
+        except TypeError:
+            pass
+        return self.field.fromUnicode(value)
 
 
 class ListEventsForm(form.Form):
@@ -72,7 +101,7 @@ class ListEventsView(BrowserView):
         # Hide the editable border and tabs
         self.request.set('disable_border', True)
 
-        if not self.request.form or self.request.form.get('form.buttons.reset'):
+        if not self._validate():
             return self.index()
 
         # Prepare display values for the template
@@ -80,6 +109,18 @@ class ListEventsView(BrowserView):
             'events': self.events(),
         }
         return self.index(**options)
+
+    def _validate(self):
+        """Manually validate the input, because the KSS validation doesn't work
+        properly.
+        """
+        manager = field.FieldWidgets(self.form_wrapper.form_instance,
+                                     self.request, self.context)
+        manager.ignoreContext = True
+        manager.update()
+        manager.extract()
+
+        return not manager.errors
 
     def update(self):
         """This is needed so that KSS validation from plone.app.z3cform works
@@ -134,9 +175,9 @@ class ListEventsView(BrowserView):
                     # words (XXX: OR operator doesn't work as expected?)
                     querydict[field] = words
             elif field == 'startDate' or field == 'endDate':
-                year = self.request.get('form.widgets.%s-year' % field)
-                month = self.request.get('form.widgets.%s-month' % field)
-                day = self.request.get('form.widgets.%s-day' % field) or '1'
+                year = self.request.form.get('form.widgets.%s-year' % field)
+                month = self.request.form.get('form.widgets.%s-month' % field)
+                day = self.request.form.get('form.widgets.%s-day' % field) or '1'
                 if year and month:
                     event_date = date(int(year), int(month), int(day))
                     querydict[field] = event_date.isoformat()
