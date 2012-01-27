@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """Module for communicating with the IWWB web service."""
 
 from iwwb.eventlist.interfaces import IIWWBSearcher

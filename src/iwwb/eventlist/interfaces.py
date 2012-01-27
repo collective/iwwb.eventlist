@@ -4,11 +4,12 @@
 from datetime import date
 from datetime import timedelta
 from iwwb.eventlist import _
+from iwwb.eventlist import check_year_constraint
 from plone.theme.interfaces import IDefaultPloneLayer
+from zope import schema
 from zope.interface import Interface
 from zope.interface import Invalid
 from zope.interface import invariant
-from zope import schema
 
 
 class IIWWBEventlistLayer(IDefaultPloneLayer):

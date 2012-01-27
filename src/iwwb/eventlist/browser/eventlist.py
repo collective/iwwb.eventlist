@@ -3,8 +3,8 @@
 
 from datetime import date
 from iwwb.eventlist import _
-from iwwb.eventlist.interfaces import IListEventsForm
 from iwwb.eventlist.interfaces import IIWWBSearcher
+from iwwb.eventlist.interfaces import IListEventsForm
 from iwwb.eventlist.interfaces import IWWB_SEARCHABLE_FIELDS
 from plone.z3cform.layout import FormWrapper
 from Products.Five.browser import BrowserView
