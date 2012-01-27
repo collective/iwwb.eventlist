@@ -22,13 +22,6 @@ class IIWWBSearcher(Interface):
     """
 
 
-def check_year_constraint(value):
-    """Check that the year entered is not too low or too high."""
-    if value.year < 1000 or value.year > 9999:
-        raise Invalid(_(u"The year entered is not valid."))
-    return True
-
-
 class IListEventsForm(Interface):
     """Field definition for List Events form."""
 
