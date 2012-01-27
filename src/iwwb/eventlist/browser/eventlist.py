@@ -98,7 +98,6 @@ class ListEventsView(BrowserView):
             searcher = getUtility(IIWWBSearcher)
             if querydict:
                 results = querydict and searcher.get_results(querydict)
-                #results = self._filter_results(results)
         except:
             messages = IStatusMessage(self.request)
             messages.addStatusMessage(u"An error occured while fetching " \
@@ -142,20 +141,11 @@ class ListEventsView(BrowserView):
                     querydict[field] = event_date.isoformat()
             else:
                 value = self.request.get('form.widgets.%s' % field)
-                if value:
-                    # Some of the field values are lists, convert them to
-                    # string
-                    if isinstance(value, (list, tuple)):
-                        value = ','.join(value)
-                    querydict[field] = value
+                if not value:
+                    continue
+                # Some field values are lists, convert them to string
+                if isinstance(value, (list, tuple)):
+                    value = ','.join(value)
+                querydict[field] = value
 
         return querydict
-
-    #===========================================================================
-    # def _filter_results(self, results):
-    #    """Additional filtering of results, not possible with the IWWB api."""
-    #    if self.request.get('form.widgets.startTimeRequired'):
-    #        return [res for res in results if hasattr(res, 'startTime')]
-    #    else:
-    #        return results
-    #===========================================================================
