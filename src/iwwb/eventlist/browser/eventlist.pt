@@ -45,6 +45,7 @@
               <th i18n:translate="">Title</th>
               <th i18n:translate="">Type</th>
               <th i18n:translate="">City</th>
+              <th i18n:translate="">Zip</th>
               <th i18n:translate="">Start date</th>
               <th i18n:translate="">Training Supplier</th>
               <th i18n:translate="">Database Supplier</th>
@@ -54,7 +55,8 @@
             <tr tal:repeat="event events">
               <td tal:content="event/Title">Title</td>
               <td tal:content="python: view.event_type(event.Type)">Event type</td>
-              <td tal:content="event/City|nothing" >City</td>
+              <td tal:content="event/City|nothing">City</td>
+              <td tal:content="event/Zip|nothing">Zip code</td>
               <td tal:content="event/StartTime|nothing">Start date</td>
               <td>
                 <a tal:content="event/TrainingSupplier|nothing"
