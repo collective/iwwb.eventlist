@@ -32,7 +32,7 @@ class TestIWWBSearcherMocked(unittest.TestCase):
         from iwwb.eventlist.searcher import IWWBSearcher
 
         # IWWB service returns '' if it doesn't find any results
-        _get_service_client.return_value.service.GetFullResult.SearchResults.return_value = ''
+        _get_service_client.return_value.service.GetFullResult.return_value.SearchResults = ''
 
         self.assertEquals(IWWBSearcher().get_results(dict(query='foo')), [])
 
