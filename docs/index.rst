@@ -7,6 +7,7 @@ Table of Contents
    :maxdepth: 2
 
    glossary.rst
+   translations.rst
    api.rst
 
 .. include:: HISTORY.rst

@@ -16,9 +16,9 @@ class EventTypesVocabulary(object):
         """Build a vocabulary of event types.
         """
         items = [
-            SimpleTerm(0, 0, _(u'Alle Angebote')),
-            SimpleTerm(1, 1, _(u'Seminare')),
-            SimpleTerm(2, 2, _(u'Fernunterricht')),
+            SimpleTerm(0, 0, _(u'All Events')),
+            SimpleTerm(1, 1, _(u'Seminar')),
+            SimpleTerm(2, 2, _(u'Distance Learning')),
             SimpleTerm(3, 3, _(u'CBT/WBT/E-Learning')),
         ]
 
