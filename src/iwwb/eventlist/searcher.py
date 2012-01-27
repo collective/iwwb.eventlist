@@ -17,7 +17,7 @@ MAX_RESULTS = 1000
 
 
 class IWWBSearcher(object):
-    """Utility for fetching the results from the IWWWB service"""
+    """Utility for fetching results from the IWWWB service."""
     implements(IIWWBSearcher)
 
     def __init__(self):

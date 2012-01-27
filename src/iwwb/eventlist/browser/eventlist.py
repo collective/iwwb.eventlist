@@ -54,7 +54,7 @@ class ListEventsFormWrapper(FormWrapper):
 
 
 class ListEventsView(BrowserView):
-    """A BrowserView to display the ListEventsForm along with it's results."""
+    """A BrowserView to display the ListEventsForm along with its results."""
     index = ViewPageTemplateFile('eventlist.pt')
 
     def __init__(self, context, request):
