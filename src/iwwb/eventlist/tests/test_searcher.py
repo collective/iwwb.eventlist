@@ -5,11 +5,42 @@ from iwwb.eventlist.tests.base import IntegrationTestCase
 from iwwb.eventlist.interfaces import IIWWBSearcher
 from zope.component import getUtility
 
+import mock
+import suds
 import unittest2 as unittest
 
 
-class TestIWWBSearcher(IntegrationTestCase):
-    """Test the IWWBSearcher utility."""
+class TestIWWBSearcherMocked(unittest.TestCase):
+    """Unit test on IWWBSearcher using mocked service results."""
+
+    @mock.patch('iwwb.eventlist.searcher.Client')
+    def test_catch_exception_on_invalid_client(self, suds_client):
+        """Test an exception is caugth if suds.client.Client() returns one when
+        trying to access an invalid SOAP client.
+        """
+        from iwwb.eventlist.searcher import IWWBSearcher
+
+        suds_client.return_value = None
+        suds_client.side_effect = Exception('Invalid SUDS client')
+
+        with self.assertRaises(Exception):
+            IWWBSearcher()._get_service_client()
+
+    @mock.patch('iwwb.eventlist.searcher.IWWBSearcher._get_service_client')
+    def test_return_empty_list_for_empty_results(self, _get_service_client):
+        """An empty list must be returned if we get empty SearchResults."""
+        from iwwb.eventlist.searcher import IWWBSearcher
+
+        # IWWB service returns '' if it doesn't find any results
+        _get_service_client.return_value.service.GetFullResult.SearchResults.return_value = ''
+
+        self.assertEquals(IWWBSearcher().get_results(dict(query='foo')), [])
+
+
+class TestIWWBSearcherIntegration(IntegrationTestCase):
+    """Integration test for the IWWBSearcher utility that actually call the
+    service and assert results.
+    """
 
     def setUp(self):
         """Custom shared utility setup for tests."""

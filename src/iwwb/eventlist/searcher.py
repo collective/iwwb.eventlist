@@ -33,6 +33,8 @@ class IWWBSearcher(object):
         """
         try:
             client = Client(WSDL_URL)
+            if not isinstance(client, Client):
+                raise
         except:
             # Many things can go wrong
             message = "Can't access the IWWB service."
