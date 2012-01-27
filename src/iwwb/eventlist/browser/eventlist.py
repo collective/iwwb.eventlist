@@ -101,7 +101,7 @@ class ListEventsView(BrowserView):
         # Hide the editable border and tabs
         self.request.set('disable_border', True)
 
-        if not self._validate():
+        if self.request.form.get('form.buttons.reset') or not self._validate():
             return self.index()
 
         # Prepare display values for the template
