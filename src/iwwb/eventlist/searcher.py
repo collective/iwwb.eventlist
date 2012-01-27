@@ -22,7 +22,7 @@ class IWWBSearcher(object):
 
     def __init__(self):
         self.client = self._get_service_client()
-        self.max_results = RESULTS_PER_PAGE
+        self.max_results = MAX_RESULTS
         self.results_per_page = RESULTS_PER_PAGE
 
     def _get_service_client(self):
