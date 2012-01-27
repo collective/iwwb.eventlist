@@ -51,7 +51,7 @@ class IListEventsForm(Interface):
     )
     zip = schema.TextLine(
         title=_(u'Zip code'),
-        description=_(u'Enter the zip code.'),
+        description=_(u'Enter the zip code. Examples: 12277, 20999, etc.'),
         required=False,
     )
     type = schema.Choice(
