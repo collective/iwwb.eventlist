@@ -66,9 +66,7 @@ class IWWBSearcher(object):
             logger.exception(message)
             raise Exception(message)
 
-        if results_array.SearchResults:
-            results = [res for res in results_array.SearchResults.SearchResult]
-        else:
-            results = []
+        if not results_array.SearchResults:
+            return []
 
-        return results
+        return [res for res in results_array.SearchResults.SearchResult]

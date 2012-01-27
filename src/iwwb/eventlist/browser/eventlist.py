@@ -123,15 +123,16 @@ class ListEventsView(BrowserView):
         for field in IWWB_SEARCHABLE_FIELDS:
             if field == 'query':
                 value = self.request.get('form.widgets.query')
-                if value:
-                    words = value.split()
-                    search_all_words = self.request.get('form.widgets.allWords')
-                    if search_all_words:
-                        querydict[field] = " AND ".join(words)
-                    else:
-                        # If no operator is specified it searches for all the
-                        # words (XXX: OR operator doesn't work as expected?)
-                        querydict[field] = words
+                if not value:
+                    continue
+                words = value.split()
+                search_all_words = self.request.get('form.widgets.allWords')
+                if search_all_words:
+                    querydict[field] = " AND ".join(words)
+                else:
+                    # If no operator is specified it searches for all the
+                    # words (XXX: OR operator doesn't work as expected?)
+                    querydict[field] = words
             elif field == 'startDate' or field == 'endDate':
                 year = self.request.get('form.widgets.%s-year' % field)
                 month = self.request.get('form.widgets.%s-month' % field)
