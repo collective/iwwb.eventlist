@@ -30,7 +30,7 @@ class ListEventsForm(form.Form):
     # usable for edit forms, where you have an actual context
     ignoreContext = True
 
-    @button.buttonAndHandler(_(u"List Events!"))
+    @button.buttonAndHandler(_(u"List Events"))
     def list_events(self, action):
         """Submit button handler."""
         data, errors = self.extractData()
@@ -101,9 +101,9 @@ class ListEventsView(BrowserView):
                 #results = self._filter_results(results)
         except:
             messages = IStatusMessage(self.request)
-            messages.addStatusMessage(u"There was an error getting the \
-                results, please try again later.", type="error")
-            logger.exception('Error fetching the results')
+            messages.addStatusMessage(u"An error occured while fetching " \
+                "results. Please try again later.", type="error")
+            logger.exception('Error fetching results')
 
         return results
 

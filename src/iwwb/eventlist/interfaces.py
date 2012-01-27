@@ -27,7 +27,8 @@ class IListEventsForm(Interface):
 
     query = schema.TextLine(
         title=_(u'Keywords'),
-        description=_(u'Enter the search keywords.'),
+        descrption=_(u'Enter the search keywords. Examples: Seminar, Excel, ' \
+            'Berlin, etc.'),
         required=False,
     )
     # Doesn't work ATM
@@ -40,19 +41,19 @@ class IListEventsForm(Interface):
     #===========================================================================
     city = schema.TextLine(
         title=_(u'City'),
-        description=_(u'Enter the city.'),
+        description=_(u'Enter the city. Examples: Berlin, Bonn, etc.'),
         required=False,
     )
     startDate = schema.Date(
         title=_(u'Date start'),
-        description=_(u'Enter the earliest event start date.'),
+        description=_(u'Enter the event start date.'),
         required=False,
         default=date.today(),
         constraint=check_year_constraint,
     )
     endDate = schema.Date(
         title=_(u'Date end'),
-        description=_(u'Enter the latest event start date.'),
+        description=_(u'Enter the event start date.'),
         required=False,
         default=date.today() + timedelta(7),
         constraint=check_year_constraint,
@@ -84,9 +85,8 @@ class IListEventsForm(Interface):
     def check_enough_data_provided(obj):
         """Check that the user has provided enough data to perform the query."""
         if not (obj.query or obj.city or obj.startDate):
-            raise Invalid(
-                    _("You have to fill out at least one additional field \
-                    (Keywords, City or Even Start)"))
+            raise Invalid(_("You have to fill out at least one of required " \
+                "fields: Keywords, City or Event Start"))
 
 
 IWWB_SEARCHABLE_FIELDS = ('query', 'city', 'startDate', 'endDate', 'type', 'sort',)

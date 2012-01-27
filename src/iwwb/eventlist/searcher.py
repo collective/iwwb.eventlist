@@ -62,7 +62,7 @@ class IWWBSearcher(object):
             )
         except:
             # Many things can go wrong
-            message = "Can't parse the IWWB search results."
+            message = "Can't parse IWWB search results."
             logger.exception(message)
             raise Exception(message)
 
