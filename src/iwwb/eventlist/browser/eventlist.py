@@ -145,6 +145,9 @@ class ListEventsView(BrowserView):
                 "results. Please try again later.", type="error")
             logger.exception('Error fetching results')
 
+        if not results:
+            IStatusMessage(self.request).addStatusMessage(_('No events found.'), type="info")
+
         return results
 
     def event_type(self, type_id):
