@@ -36,3 +36,10 @@
     color: red;
     margin: 10px 15px 15px 10px;
 }
+
+#eventlist-form div.error{
+    background-color: #FFDDCC;
+    border: 1px solid red;
+    margin-bottom: 0.5em;
+    padding: 0.5em;
+}
