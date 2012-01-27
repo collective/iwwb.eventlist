@@ -24,7 +24,6 @@ class IIWWBSearcher(Interface):
 
 class IListEventsForm(Interface):
     """Field definition for List Events form."""
-
     query = schema.TextLine(
         title=_(u'Keywords'),
         description=_(u'Enter the search keywords. Examples: Seminar, Excel, ' \
@@ -88,5 +87,10 @@ class IListEventsForm(Interface):
             raise Invalid(_("You have to fill out at least one of required " \
                 "fields: Keywords, City or Event Start"))
 
+    @invariant
+    def check_end_date_bigger_than_start(obj):
+        if obj.startDate > obj.endDate:
+            raise Invalid(_("End date must be smaller than start date"))
+        return True
 
 IWWB_SEARCHABLE_FIELDS = ('query', 'city', 'startDate', 'endDate', 'type', 'sort',)
