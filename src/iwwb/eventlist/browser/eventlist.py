@@ -71,7 +71,7 @@ class ListEventsForm(form.Form):
     @button.buttonAndHandler(_(u"Reset"))
     def reset_form(self, action):
         """Cancel button handler."""
-        url = self.context.portal_url() + "/@@eventlist"
+        url = self.context.absolute_url() + "/@@eventlist"
         self.request.response.redirect(url)
 
 
