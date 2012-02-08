@@ -61,21 +61,19 @@ class IListEventsForm(Interface):
         required=True,
         default=0,
     )
+
+    startTimeRequired = schema.Bool(
+        title=_(u'Exclude events without dates'),
+        description=_(u'If the event does not have the date information it '
+                      'will not be listed.'),
+        required=False,
+    )
+
     # Doesn't work ATM
     #===========================================================================
     # allWords = schema.Bool(
     #    title=_(u'All keywords'),
     #    description=_(u'Select this if you want to search for all keywords.'),
-    #    required=False,
-    # )
-    #===========================================================================
-
-    # Doesn't work ATM
-    #===========================================================================
-    # startTimeRequired = schema.Bool(
-    #    title=_(u'Only events with start date'),
-    #    description=_(u'If the event does not have the date information it '
-    #                  'will not be listed.'),
     #    required=False,
     # )
     #===========================================================================

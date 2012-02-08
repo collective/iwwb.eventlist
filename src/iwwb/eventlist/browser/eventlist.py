@@ -148,6 +148,9 @@ class ListEventsView(BrowserView):
         if not results:
             IStatusMessage(self.request).addStatusMessage(_('No events found.'), type="info")
 
+        # TODO: filter on serverside
+        if self.request.form.get('form.widgets.startTimeRequired'):
+            results = filter(lambda x: hasattr(x, 'StartTime'), results)
         return results
 
     def event_type(self, type_id):
