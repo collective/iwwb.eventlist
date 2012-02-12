@@ -36,7 +36,7 @@ setup(name='iwwb.eventlist',
       zip_safe=False,
       install_requires=[
           # list project dependencies
-          'collective.js.datatables',
+          'collective.js.datatables>=1.9',
           'setuptools',
           'suds',
       ],
