@@ -53,7 +53,12 @@
           </thead>
           <tbody>
             <tr tal:repeat="event events">
-              <td tal:content="event/Title">Title</td>
+              <td>
+                <a tal:content="event/Title"
+                   tal:attributes="href event/ReferenceUrl|nothing">
+                  Title
+                </a>
+              </td>
               <td tal:content="python: view.event_type(event.Type)">Event type</td>
               <td tal:content="event/City|nothing">City</td>
               <td tal:content="event/Zip|nothing">Zip code</td>
