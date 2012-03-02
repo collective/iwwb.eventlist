@@ -27,7 +27,7 @@
     </h1>
 
     <div id="eventlist-form">
-      <form tal:replace="structure view/form_wrapper" />
+      <form tal:replace="structure view/contents" />
     </div>
 
     <div class="visualClear"></div>

@@ -39,6 +39,7 @@ setup(name='iwwb.eventlist',
           'collective.js.datatables>=1.9',
           'setuptools',
           'suds',
+          'z3c.form',
       ],
       extras_require={
           # list libs needed for unittesting this project

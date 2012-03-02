@@ -7,13 +7,11 @@ from iwwb.eventlist.interfaces import IIWWBSearcher
 from iwwb.eventlist.interfaces import IListEventsForm
 from iwwb.eventlist.interfaces import IWWB_SEARCHABLE_FIELDS
 from plone.z3cform.layout import FormWrapper
-from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.statusmessages.interfaces import IStatusMessage
 from z3c.form import button
 from z3c.form import field
 from z3c.form import form
-from z3c.form.converter import BaseDataConverter
 from z3c.form.interfaces import IWidget
 from zope.component import adapts
 from zope.component import getUtility
@@ -23,31 +21,6 @@ from zope.schema.interfaces import IVocabularyFactory
 import logging
 
 logger = logging.getLogger('iwwb.eventlist')
-
-
-class TextLineFieldDataConverter(BaseDataConverter):
-    """Customized data converter for the TextLine field.
-
-    XXX: We need this because we are getting a WrongType error on TextLine
-    fields - the original converter expects a unicode value, but somehow gets
-    a string.
-    """
-    adapts(ITextLine, IWidget)
-
-    def toFieldValue(self, value):
-        """See z3c.form.interfaces.IDataConverter"""
-
-        if value == u'':
-            return self.field.missing_value
-
-        # XXX: The original converter expects unicode value, but gets normal
-        # string, here we convert the string to unicode first
-        #return self.field.fromUnicode(value)
-        try:
-            value = unicode(value, 'utf-8')
-        except TypeError:
-            pass
-        return self.field.fromUnicode(value)
 
 
 class ListEventsForm(form.Form):
@@ -75,58 +48,24 @@ class ListEventsForm(form.Form):
         self.request.response.redirect(url)
 
 
-class ListEventsFormWrapper(FormWrapper):
-    """Subclass FormWrapper so that we can use a custom frame template that
-    renders only the form, nothing else.
-    """
-    index = ViewPageTemplateFile("formwrapper.pt")
-
-
-class ListEventsView(BrowserView):
+class ListEventsView(FormWrapper):
     """A BrowserView to display the ListEventsForm along with its results."""
     index = ViewPageTemplateFile('eventlist.pt')
-
-    def __init__(self, context, request):
-        """Override BrowserView's __init__ to create the ListEventsForm
-        for later use.
-        """
-        BrowserView.__init__(self, context, request)
-        self.form_wrapper = ListEventsFormWrapper(self.context, self.request)
-        self.form_wrapper.form_instance = ListEventsForm(
-            self.context, self.request
-        )
+    form = ListEventsForm
 
     def __call__(self):
         """Main view method that handles rendering."""
         # Hide the editable border and tabs
         self.request.set('disable_border', True)
 
-        if self.request.form.get('form.buttons.reset') or not self._validate():
+        if self.request.form.get('form.buttons.reset'):
             return self.index()
 
         # Prepare display values for the template
-        options = {
+        self.options = {
             'events': self.events(),
         }
-        return self.index(**options)
-
-    def _validate(self):
-        """Manually validate the input, because the KSS validation doesn't work
-        properly.
-        """
-        manager = field.FieldWidgets(self.form_wrapper.form_instance,
-                                     self.request, self.context)
-        manager.ignoreContext = True
-        manager.update()
-        manager.extract()
-
-        return not manager.errors
-
-    def update(self):
-        """This is needed so that KSS validation from plone.app.z3cform works
-        as expected.
-        """
-        self.form_wrapper.form_instance.update()
+        return super(ListEventsView, self).__call__()
 
     def events(self):
         """Get the events for the provided parameters using the IIWWBSearcher
@@ -175,7 +114,7 @@ class ListEventsView(BrowserView):
                 words = value.split()
                 search_all_words = self.request.get('form.widgets.allWords')
                 if search_all_words:
-                    querydict[field] = " AND ".join(words)
+                    querydict[field] = u" AND ".join(words)
                 else:
                     # If no operator is specified it searches for all the
                     # words (XXX: OR operator doesn't work as expected?)
