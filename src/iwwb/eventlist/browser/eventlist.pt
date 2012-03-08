@@ -36,7 +36,7 @@
       Results
     </h2>
 
-    <tal:results define="events options/events|nothing">
+    <tal:results define="events view/options/events|nothing">
         <!-- The id here here must be 'example' because we use dataTable's demo CSS -->
         <table id="example" class="display"
                tal:condition="events">

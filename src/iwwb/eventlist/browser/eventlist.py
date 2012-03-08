@@ -12,10 +12,7 @@ from Products.statusmessages.interfaces import IStatusMessage
 from z3c.form import button
 from z3c.form import field
 from z3c.form import form
-from z3c.form.interfaces import IWidget
-from zope.component import adapts
 from zope.component import getUtility
-from zope.schema.interfaces import ITextLine
 from zope.schema.interfaces import IVocabularyFactory
 
 import logging
@@ -53,19 +50,20 @@ class ListEventsView(FormWrapper):
     index = ViewPageTemplateFile('eventlist.pt')
     form = ListEventsForm
 
-    def __call__(self):
+    def update(self):
         """Main view method that handles rendering."""
-        # Hide the editable border and tabs
-        self.request.set('disable_border', True)
+        super(ListEventsView, self).update()
 
         if self.request.form.get('form.buttons.reset'):
             return self.index()
+
+        # Hide the editable border and tabs
+        self.request.set('disable_border', True)
 
         # Prepare display values for the template
         self.options = {
             'events': self.events(),
         }
-        return super(ListEventsView, self).__call__()
 
     def events(self):
         """Get the events for the provided parameters using the IIWWBSearcher
