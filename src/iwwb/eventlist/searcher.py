@@ -60,7 +60,7 @@ class IWWBSearcher(object):
                 maxResult=self.max_results,
                 resultPerPage=self.results_per_page,
                 page=page,
-                ** query
+                **query
             )
         except:
             # Many things can go wrong

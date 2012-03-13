@@ -75,19 +75,15 @@ class ListEventsView(FormWrapper):
         try:
             searcher = getUtility(IIWWBSearcher)
             if querydict:
-                results = querydict and searcher.get_results(querydict)
+                results = searcher.get_results(querydict)
         except:
-            messages = IStatusMessage(self.request)
-            messages.addStatusMessage(u"An error occured while fetching " \
+            IStatusMessage(self.request).addStatusMessage(u"An error occured while fetching " \
                 "results. Please try again later.", type="error")
             logger.exception('Error fetching results')
 
         if not results:
             IStatusMessage(self.request).addStatusMessage(_('No events found.'), type="info")
 
-        # TODO: filter on serverside
-        if self.request.form.get('form.widgets.startTimeRequired'):
-            results = filter(lambda x: hasattr(x, 'StartTime'), results)
         return results
 
     def event_type(self, type_id):
@@ -133,4 +129,7 @@ class ListEventsView(FormWrapper):
                     value = ','.join(value)
                 querydict[field] = value
 
+        termine = self.request.get('form.widgets.startTimeRequired')
+        if termine:
+            querydict['termine'] = 'yes'
         return querydict

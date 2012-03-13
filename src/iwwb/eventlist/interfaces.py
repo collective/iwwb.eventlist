@@ -67,6 +67,7 @@ class IListEventsForm(Interface):
         description=_(u'If the event does not have the date information it '
                       'will not be listed.'),
         required=False,
+        default=True,
     )
 
     # Doesn't work ATM
