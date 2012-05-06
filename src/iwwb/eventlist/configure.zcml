@@ -39,6 +39,10 @@
     name="iwwb.eventlist.vocabularies.EventTypes"
     />
   <utility
+    component=".vocabularies.CountiesVocabularyFactory"
+    name="iwwb.eventlist.vocabularies.Counties"
+    />
+  <utility
     component=".vocabularies.SortOptionsVocabularyFactory"
     name="iwwb.eventlist.vocabularies.SortOptions"
     />
