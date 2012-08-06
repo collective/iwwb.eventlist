@@ -48,7 +48,6 @@
               <th i18n:translate="">Zip</th>
               <th i18n:translate="">Start date</th>
               <th i18n:translate="">Training Supplier</th>
-              <th i18n:translate="">Database Supplier</th>
             </tr>
           </thead>
           <tbody>
@@ -67,12 +66,6 @@
                 <a tal:content="event/TrainingSupplier|nothing"
                    tal:attributes="href event/TrainingSupplierUrl|nothing">
                   Training Supplier
-                </a>
-              </td>
-              <td>
-                <a tal:content="event/DatabaseSupplier|nothing"
-                   tal:attributes="href event/DatabaseSupplierURL|nothing">
-                  Database Supplier
                 </a>
               </td>
             </tr>
