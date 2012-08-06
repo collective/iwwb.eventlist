@@ -113,13 +113,13 @@ class ListEventsView(FormWrapper):
                     # If no operator is specified it searches for all the
                     # words (XXX: OR operator doesn't work as expected?)
                     querydict[field] = words
-            elif field == 'startDate' or field == 'endDate':
+            elif field == 'startMonth':
                 year = self.request.form.get('form.widgets.%s-year' % field)
                 month = self.request.form.get('form.widgets.%s-month' % field)
                 day = self.request.form.get('form.widgets.%s-day' % field) or '1'
                 if year and month:
                     event_date = date(int(year), int(month), int(day))
-                    querydict[field] = event_date.isoformat()
+                    querydict['startDate'] = event_date.isoformat()
             else:
                 value = self.request.get('form.widgets.%s' % field)
                 if not value:
