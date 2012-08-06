@@ -120,6 +120,19 @@ class ListEventsView(FormWrapper):
                 if year and month:
                     event_date = date(int(year), int(month), int(day))
                     querydict['startDate'] = event_date.isoformat()
+            elif field == 'zipcity':
+                value = self.request.get('form.widgets.%s' % field)
+                if not value:
+                    continue
+                if ',' in value:
+                    zips = [x.strip() for x in value.split(',')
+                        if x.strip().isdigit()]
+                    if len(zips) > 0:
+                        querydict['zip'] = value
+                elif value.strip().isdigit():
+                    querydict['zip'] = int(value)
+                else:
+                    querydict['city'] = value
             else:
                 value = self.request.get('form.widgets.%s' % field)
                 if not value:
