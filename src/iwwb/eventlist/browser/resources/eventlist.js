@@ -32,4 +32,10 @@ $(document).ready(function () {
         sPaginationType: "full_numbers",
         iDisplayLength: 25
     });
+
+    $('a.training-supplier').prepOverlay({
+        subtype: 'ajax',
+        filter: '.anbieterinfos',
+    });
+
 });
