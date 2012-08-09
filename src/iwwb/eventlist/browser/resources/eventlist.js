@@ -1,3 +1,44 @@
+/*
+ * Wrapper around jquery.load to allow cross domain calls
+ *
+ * If the browser does not support cross domain AJAX calls
+ * we'll use a proxy function on the local server. For
+ * performance reasons we do this only when absolutely needed.
+ *
+ * @param {String} url: String with an url to load (and optionally
+ a selector)
+ * @param {String} params: Arguments as a dictionary like object, passed to remote call
+ * @param {Object} callback: A callback function that is executed when the request completes.
+ *
+ */
+(function ($) {
+    $.fn.loadUrl = function (url, params, callback) {
+
+        // Split the url to the base url part and the selector
+        var selector = url.split(" ")[1] || "";
+        url = url.split(" ")[0];
+
+        // if 'params' is a function
+        if (jQuery.isFunction(params)) {
+            // we assume that it's the callback
+            callback = params;
+            params = undefined;
+        }
+
+        // we use jQuery API to detect whether a browser supports cross
+        // domain AJAX calls - http://api.jquery.com/jQuery.support/
+        if (!jQuery.support.cors) {
+
+            // change 'load' to go to our proxy view on a local server
+            // and pass the orignal URL as a parameter
+            params = params || {};
+            params.url = url;
+            url = 'http://localhost:8080/Plone' + "/@@proxy";
+        }
+        this.load(url + " " + selector, params, callback);
+    };
+})(jQuery);
+
 $(document).ready(function () {
     var transform_anchor_to_text = function (sValue, iColumn) {
         /* transform anchor links to text links for exporting to formats like csv */
@@ -33,9 +74,22 @@ $(document).ready(function () {
         iDisplayLength: 25
     });
 
-    $('a.training-supplier').prepOverlay({
-        subtype: 'ajax',
-        filter: '.anbieterinfos',
+    $("a.training-supplier").overlay({
+        onBeforeLoad: function () {
+
+            // show the loading image
+            pb.spinner.show();
+
+            // grab the content container
+            var wrap = this.getOverlay().find(".content-wrap");
+
+            // load the page specified in the trigger and hide the loading
+            // image
+            wrap.loadUrl(
+                this.getTrigger().attr("href") + ' .anbieterinfos',
+                pb.spinner.hide
+            );
+        }
     });
 
 });

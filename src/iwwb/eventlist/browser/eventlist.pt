@@ -16,7 +16,6 @@
 <metal:js fill-slot="javascript_head_slot">
   <script tal:attributes="src string:$portal_url/++resource++jquery.datatables/extras/TableTools/media/js/ZeroClipboard.js" type="text/javascript"></script>
   <script tal:attributes="src string:$portal_url/++resource++jquery.datatables/extras/TableTools/media/js/TableTools.js" type="text/javascript"></script>
-  <script tal:attributes="src string:$portal_url/++resource++iwwb.eventlist/jquery.xdomainajax.js" type="text/javascript"></script>
   <script tal:attributes="src string:$portal_url/++resource++iwwb.eventlist/eventlist.js" type="text/javascript"></script>
 </metal:js>
 
@@ -64,7 +63,8 @@
               <td tal:content="event/Zip|nothing">Zip code</td>
               <td tal:content="event/StartTime|nothing">Start date</td>
               <td>
-                <a class="training-supplier" tal:content="event/TrainingSupplier|nothing"
+                <a class="training-supplier" rel="#overlay"
+		           tal:content="event/TrainingSupplier|nothing"
                    tal:attributes="href event/TrainingSupplierUrl|nothing">
                   Training Supplier
                 </a>
@@ -74,6 +74,12 @@
         </table>
         <p tal:condition="python: not events">No results were found.</p>
     </tal:results>
+
+    <!-- overlay -->
+    <div class="overlay overlay-ajax" id="overlay">
+      <div class="close"><span>Close</span></div>
+      <div class="pb-ajax"><div class="content-wrap"></div></div>
+    </div>
 
   </metal:main>
 </metal:main>

@@ -13,6 +13,15 @@
     layer="iwwb.eventlist.interfaces.IIWWBEventlistLayer"
     />
 
+  <!-- Register the proxy view -->
+  <browser:page
+    name="proxy"
+    for="Products.CMFCore.interfaces.ISiteRoot"
+    class=".proxy.ProxyView"
+    permission="zope2.View"
+    layer="iwwb.eventlist.interfaces.IIWWBEventlistLayer"
+    />
+
   <!-- Publish static media files -->
   <browser:resourceDirectory
     name="iwwb.eventlist"
