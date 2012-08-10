@@ -86,8 +86,23 @@ $(document).ready(function () {
             // load the page specified in the trigger and hide the loading
             // image
             wrap.loadUrl(
-                this.getTrigger().attr("href") + ' .anbieterinfos',
-                pb.spinner.hide
+                this.getTrigger().attr("href") + ' #content',
+                function () {
+                    var content = $(this).children("#content"),
+                        children = content.children();
+
+                    // remove everything except h3 and div.anbieterinfos
+                    $.each(children, function (index, child) {
+                        var $child = $(child);
+                        if (!$child.is("h3") &&
+                            $child.attr("class") !== "anbieterinfos") {
+                            $child.remove();
+                        }
+                    });
+
+                    // hide the loading image
+                    pb.spinner.hide();
+                }
             );
         }
     });
