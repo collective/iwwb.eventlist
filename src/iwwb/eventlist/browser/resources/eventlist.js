@@ -33,7 +33,7 @@
             // and pass the orignal URL as a parameter
             params = params || {};
             params.url = url;
-            url = 'http://localhost:8080/Plone' + "/@@proxy";
+            url = portal_url + "/@@proxy";
         }
         this.load(url + " " + selector, params, callback);
     };
