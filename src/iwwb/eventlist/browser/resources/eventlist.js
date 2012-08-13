@@ -28,16 +28,12 @@
             params = undefined;
         }
 
-        // we use jQuery API to detect whether a browser supports cross
-        // domain AJAX calls - http://api.jquery.com/jQuery.support/
-        if (!$.support.cors) {
-
-            // change 'load' to go to our proxy view on a local server
-            // and pass the orignal URL as a parameter
-            params = params || {};
-            params.url = url;
-            url = portal_url + "/@@proxy";
-        }
+        // go to our proxy view on a local server
+        // and pass the orignal URL as a parameter
+        params = params || {};
+        params.url = url;
+        params.remoteCharset = "ISO-8859-1";  // encoding of iwwb.de
+        url = portal_url + "/@@proxy";
         this.load(url + " " + selector, params, callback);
     };
 

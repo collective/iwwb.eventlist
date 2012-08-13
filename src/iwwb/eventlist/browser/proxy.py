@@ -32,10 +32,15 @@ class ProxyView(BrowserView):
         Use HTTP GET ``url`` query parameter for the target of the real
         request.
         """
+        charset = self.request.get("remoteCharset", None)
+        enc_info = "" if (not charset) else ";charset={0}".format(charset)
 
         # Make sure any theming layer won't think this is HTML
         # http://stackoverflow.com/questions/477816/the-right-json-content-type
-        self.request.response.setHeader("Content-type", "application/json")
+        self.request.response.setHeader(
+            "Content-type",
+            "application/json{0}".format(enc_info)
+        )
 
         url = self.request.get("url", None)
         if not url:
@@ -50,9 +55,10 @@ class ProxyView(BrowserView):
             return
 
         # Pass other HTTP GET query parameters directly to the target server
+        exclude_params = ('url', 'remoteCharset')
         params = {}
         for key, value in self.request.form.items():
-            if key != "url":
+            if key not in exclude_params:
                 params[key] = value
 
         # http://www.voidspace.org.uk/python/articles/urllib2.shtml
