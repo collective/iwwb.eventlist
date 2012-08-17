@@ -8,9 +8,9 @@
 <body>
 
 <metal:css fill-slot="style_slot">
-  <link tal:attributes="href string:$portal_url/++resource++jquery.datatables/media/css/demo_table.css" media="screen" type="text/css" rel="stylesheet">
-  <link tal:attributes="href string:$portal_url/++resource++jquery.datatables/extras/TableTools/media/css/TableTools.css" media="screen" type="text/css" rel="stylesheet">
-  <link tal:attributes="href string:$portal_url/++resource++iwwb.eventlist/eventlist.css" media="screen" type="text/css" rel="stylesheet">
+  <link tal:attributes="href string:$portal_url/++resource++jquery.datatables/media/css/demo_table.css" media="screen" type="text/css" rel="stylesheet" />
+  <link tal:attributes="href string:$portal_url/++resource++jquery.datatables/extras/TableTools/media/css/TableTools.css" media="screen" type="text/css" rel="stylesheet" />
+  <link tal:attributes="href string:$portal_url/++resource++iwwb.eventlist/eventlist.css" media="screen" type="text/css" rel="stylesheet" />
 </metal:css>
 
 <metal:js fill-slot="javascript_head_slot">
@@ -23,7 +23,7 @@
   <metal:main define-macro="main">
 
     <h1 class="documentFirstHeading" i18n:translate="">
-      List events
+      Search for events
     </h1>
 
     <div id="eventlist-form">
