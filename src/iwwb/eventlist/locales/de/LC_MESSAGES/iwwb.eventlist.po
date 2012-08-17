@@ -193,7 +193,7 @@ msgstr "PLZ"
 
 #: src/iwwb/eventlist/browser/eventlist.pt:50
 msgid "Start date"
-msgstr ""
+msgstr "Beginn"
 
 #: src/iwwb/eventlist/browser/eventlist.pt:51
 msgid "Training Supplier"
