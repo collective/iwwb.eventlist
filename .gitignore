@@ -11,4 +11,5 @@ var
 *.pyc
 *.pyo
 *.egg-info
+*.mo
 
