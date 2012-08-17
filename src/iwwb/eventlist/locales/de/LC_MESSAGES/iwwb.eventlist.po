@@ -1,12 +1,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-01-27 10:18+0000\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2012-08-17 15:57+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 "Language-Code: en\n"
@@ -14,132 +15,199 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
-#: ./vocabularies.py:19
+#: src/iwwb/eventlist/__init__.py:17
+msgid "The year entered is not valid."
+msgstr "Das eingegebene Jahr ist ungültig"
+
+#: src/iwwb/eventlist/interfaces.py:28
+msgid "Keywords"
+msgstr "Suchwort(e)"
+
+#: src/iwwb/eventlist/interfaces.py:29
+msgid "Enter the search keywords. Examples: Seminar, Excel, Berlin, etc."
+msgstr "Suchwort(e) eingeben, z. B. Seminar, Excel, Berlin, etc."
+
+#: src/iwwb/eventlist/interfaces.py:41
+msgid "Course Start"
+msgstr "Start der Weiterbildung"
+
+#: src/iwwb/eventlist/interfaces.py:42
+msgid "Select the month where the course should start"
+msgstr "Wählen Sie den Monat aus, in der die Weiterbildung beginnen soll"
+
+#: src/iwwb/eventlist/interfaces.py:67
+msgid "Zip or City"
+msgstr "PLZ oder Stadt"
+
+#: src/iwwb/eventlist/interfaces.py:68
+msgid "Enter the zip code or city."
+msgstr "Geben Sie die Postleitzahl oder eine Stadt ein"
+
+#: src/iwwb/eventlist/interfaces.py:72
+msgid "Event type"
+msgstr "Angebotsform"
+
+#: src/iwwb/eventlist/interfaces.py:73
+msgid "Select the event type."
+msgstr "Wählen Sie die Angebotsform aus."
+
+#: src/iwwb/eventlist/interfaces.py:80
+msgid "Exclude events without dates"
+msgstr "Angebote ohne Termin ausschließen"
+
+#: src/iwwb/eventlist/interfaces.py:81
+msgid "If the event does not have the date information it will not be listed."
+msgstr "Falls ein Angebot kein Datum hat, wird es nicht angezeigt."
+
+#: src/iwwb/eventlist/interfaces.py:110
+msgid ""
+"You have to fill out at least one of required fields: Keywords, Zip code or "
+"city, Event Start, County"
+msgstr ""
+"Sie müssen mindestens eines der verpflichtenden Felder ausfülllen: Suchwort"
+"(e), Postleitzahl oder Stadt, Beginn oder Land"
+
+#: src/iwwb/eventlist/vocabularies.py:18
+msgid "alle"
+msgstr "alle"
+
+#: src/iwwb/eventlist/vocabularies.py:19
+msgid "Baden-Württemberg"
+msgstr "Baden-Württemberg"
+
+#: src/iwwb/eventlist/vocabularies.py:20
+msgid "Bayern"
+msgstr "Bayern"
+
+#: src/iwwb/eventlist/vocabularies.py:21
+msgid "Berlin"
+msgstr "Berlin"
+
+#: src/iwwb/eventlist/vocabularies.py:22
+msgid "Brandenburg"
+msgstr "Brandenburg"
+
+#: src/iwwb/eventlist/vocabularies.py:23
+msgid "Bremen"
+msgstr "Bremen"
+
+#: src/iwwb/eventlist/vocabularies.py:24
+msgid "Hamburg"
+msgstr "Hamburg"
+
+#: src/iwwb/eventlist/vocabularies.py:25
+msgid "Hessen"
+msgstr "Hessen"
+
+#: src/iwwb/eventlist/vocabularies.py:26
+msgid "Mecklenburg-Vorpommern"
+msgstr "Mecklenburg-Vorpommern"
+
+#: src/iwwb/eventlist/vocabularies.py:27
+msgid "Niedersachsen"
+msgstr "Niedersachsen"
+
+#: src/iwwb/eventlist/vocabularies.py:28
+msgid "Nordrhein-Westfalen"
+msgstr "Nordrhein-Westfalen"
+
+#: src/iwwb/eventlist/vocabularies.py:29
+msgid "Rheinland-Pfalz"
+msgstr "Rheinland-Pfalz"
+
+#: src/iwwb/eventlist/vocabularies.py:30
+msgid "Saarland"
+msgstr "Saarland"
+
+#: src/iwwb/eventlist/vocabularies.py:31
+msgid "Sachsen"
+msgstr "Sachsen"
+
+#: src/iwwb/eventlist/vocabularies.py:32
+msgid "Sachsen-Anhalt"
+msgstr "sachsen-Anhalt"
+
+#: src/iwwb/eventlist/vocabularies.py:33
+msgid "Schleswig-Holstein"
+msgstr "Schleswig-Holstein"
+
+#: src/iwwb/eventlist/vocabularies.py:34
+msgid "Thüringen"
+msgstr "Thüringen"
+
+#: src/iwwb/eventlist/vocabularies.py:50
 msgid "All Events"
 msgstr "Alle Angebote"
 
-#: ./vocabularies.py:22
-msgid "CBT/WBT/E-Learning"
-msgstr ""
-
-#: ./browser/eventlist.pt:47
-#: ./interfaces.py:41
-msgid "City"
-msgstr ""
-
-#: ./browser/eventlist.pt:50
-msgid "Database Supplier"
-msgstr ""
-
-#: ./interfaces.py:46
-msgid "Date end"
-msgstr ""
-
-#: ./interfaces.py:34
-msgid "Date start"
-msgstr ""
-
-#: ./vocabularies.py:45
-msgid "Datum"
-msgstr ""
-
-#: ./vocabularies.py:21
-msgid "Distance Learning"
-msgstr "Fernunterricht"
-
-#: ./interfaces.py:103
-msgid "End date must be smaller than start date"
-msgstr ""
-
-#: ./interfaces.py:42
-msgid "Enter the city. Examples: Berlin, Bonn, etc."
-msgstr ""
-
-#: ./interfaces.py:35
-msgid "Enter the event start date."
-msgstr ""
-
-#: ./interfaces.py:29
-msgid "Enter the search keywords. Examples: Seminar, Excel, Berlin, etc."
-msgstr ""
-
-#: ./interfaces.py:54
-msgid "Enter the zip code. Examples: 12277, 20999, etc."
-msgstr ""
-
-#: ./interfaces.py:58
-msgid "Event type"
-msgstr ""
-
-#: ./interfaces.py:28
-msgid "Keywords"
-msgstr ""
-
-#: ./browser/eventlist.py:56
-msgid "List Events"
-msgstr ""
-
-#: ./browser/eventlist.pt:25
-msgid "List events"
-msgstr ""
-
-#: ./browser/eventlist.py:149
-msgid "No events found."
-msgstr ""
-
-#: ./vocabularies.py:43
-msgid "Ort"
-msgstr ""
-
-#: ./vocabularies.py:44
-msgid "PLZ"
-msgstr ""
-
-#: ./browser/eventlist.py:71
-msgid "Reset"
-msgstr ""
-
-#: ./browser/eventlist.pt:35
-msgid "Results"
-msgstr ""
-
-#: ./interfaces.py:59
-msgid "Select the event type."
-msgstr ""
-
-#: ./vocabularies.py:20
+#: src/iwwb/eventlist/vocabularies.py:51
 msgid "Seminar"
 msgstr "Seminare"
 
-#: ./browser/eventlist.pt:48
+#: src/iwwb/eventlist/vocabularies.py:52
+msgid "Distance Learning"
+msgstr "Fernunterricht"
+
+#: src/iwwb/eventlist/vocabularies.py:53
+msgid "CBT/WBT/E-Learning"
+msgstr "CBT/WBT/E-Learning"
+
+#: src/iwwb/eventlist/vocabularies.py:72
+msgid "Treffergenauigkeit"
+msgstr "Treffergenauigkeit"
+
+#: src/iwwb/eventlist/vocabularies.py:74
+msgid "Ort"
+msgstr "Ort"
+
+#: src/iwwb/eventlist/vocabularies.py:75
+msgid "PLZ"
+msgstr "PLZ"
+
+#: src/iwwb/eventlist/vocabularies.py:76
+msgid "Datum"
+msgstr "Datum"
+
+#: src/iwwb/eventlist/browser/eventlist.pt:25
+msgid "Search for events"
+msgstr "Kurssuche"
+
+#: src/iwwb/eventlist/browser/eventlist.pt:35
+msgid "Results"
+msgstr "Suchergebnisse"
+
+#: src/iwwb/eventlist/browser/eventlist.pt:46
+msgid "Title"
+msgstr "Titel"
+
+#: src/iwwb/eventlist/browser/eventlist.pt:47
+msgid "Type"
+msgstr "Art der Veranstaltung"
+
+#: src/iwwb/eventlist/browser/eventlist.pt:48
+msgid "City"
+msgstr "Stadt"
+
+#: src/iwwb/eventlist/browser/eventlist.pt:49
+msgid "Zip"
+msgstr "PLZ"
+
+#: src/iwwb/eventlist/browser/eventlist.pt:50
 msgid "Start date"
 msgstr ""
 
-#: ./__init__.py:17
-msgid "The year entered is not valid."
-msgstr ""
-
-#: ./browser/eventlist.pt:45
-msgid "Title"
-msgstr ""
-
-#: ./browser/eventlist.pt:49
+#: src/iwwb/eventlist/browser/eventlist.pt:51
 msgid "Training Supplier"
-msgstr ""
+msgstr "Anbieter"
 
-#: ./vocabularies.py:41
-msgid "Treffergenauigkeit"
-msgstr ""
+#: src/iwwb/eventlist/browser/eventlist.py:26
+#: src/iwwb/eventlist/browser/eventlist.py:32
+msgid "List Events"
+msgstr "Kurse anzeigen"
 
-#: ./browser/eventlist.pt:46
-msgid "Type"
-msgstr ""
+#: src/iwwb/eventlist/browser/eventlist.py:41
+msgid "Reset"
+msgstr "Zurücksetzen"
 
-#: ./interfaces.py:97
-msgid "You have to fill out at least one of required fields: Keywords, City, Zip code, Event Start, Event End"
-msgstr ""
-
-#: ./interfaces.py:53
-msgid "Zip code"
-msgstr ""
-
+#: src/iwwb/eventlist/browser/eventlist.py:85
+msgid "No events found."
+msgstr "Keine Angebote gefunden"
