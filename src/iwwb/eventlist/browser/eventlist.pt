@@ -74,7 +74,7 @@
             </tr>
           </tbody>
         </table>
-        <p tal:condition="python: not events">No results were found.</p>
+        <p tal:condition="python: not events" i18n:translate="">No events found.</p>
     </tal:results>
 
     <!-- overlay -->
