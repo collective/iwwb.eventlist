@@ -36,7 +36,8 @@
       Results
     </h2>
 
-    <tal:results define="events view/options/events|nothing">
+    <tal:results define="events view/options/events|nothing;
+        toLocalizedTime nocall:context/@@plone/toLocalizedTime">
         <!-- The id here here must be 'example' because we use dataTable's demo CSS -->
         <table id="example" class="display"
                tal:condition="events">
@@ -61,7 +62,8 @@
               <td tal:content="python: view.event_type(event.Type)">Event type</td>
               <td tal:content="event/City|nothing">City</td>
               <td tal:content="event/Zip|nothing">Zip code</td>
-              <td tal:content="event/StartTime|nothing">Start date</td>
+              <td tal:define="startTime event/StartTime|nothing"
+                  tal:content="python:startTime and toLocalizedTime(startTime) or ''">Start date</td>
               <td>
                 <a class="training-supplier" rel="#overlay"
 		           tal:content="event/TrainingSupplier|nothing"
