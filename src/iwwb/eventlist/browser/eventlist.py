@@ -128,7 +128,7 @@ class ListEventsView(FormWrapper):
                     zips = [x.strip() for x in value.split(',')
                         if x.strip().isdigit()]
                     if len(zips) > 0:
-                        querydict['zip'] = value
+                        querydict['zip'] = ','.join(zips)
                 elif value.strip().isdigit():
                     querydict['zip'] = int(value)
                 else:
