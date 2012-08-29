@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: iwwb.eventlist 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-08-17 15:57+0200\n"
+"POT-Creation-Date: 2012-08-29 18:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -174,28 +174,63 @@ msgstr ""
 msgid "Results"
 msgstr ""
 
+#. Default: Sort by title
+#: src/iwwb/eventlist/browser/eventlist.pt:46
+msgid "sort_by_title"
+msgstr ""
+
 #: src/iwwb/eventlist/browser/eventlist.pt:46
 msgid "Title"
+msgstr ""
+
+#. Default: Sort by type
+#: src/iwwb/eventlist/browser/eventlist.pt:47
+msgid "sort_by_type"
 msgstr ""
 
 #: src/iwwb/eventlist/browser/eventlist.pt:47
 msgid "Type"
 msgstr ""
 
+#. Default: Sort by city
+#: src/iwwb/eventlist/browser/eventlist.pt:48
+msgid "sort_by_city"
+msgstr ""
+
 #: src/iwwb/eventlist/browser/eventlist.pt:48
 msgid "City"
+msgstr ""
+
+#. Default: Sort by zip
+#: src/iwwb/eventlist/browser/eventlist.pt:49
+msgid "sort_by_zip"
 msgstr ""
 
 #: src/iwwb/eventlist/browser/eventlist.pt:49
 msgid "Zip"
 msgstr ""
 
+#. Default: Sort by start date
+#: src/iwwb/eventlist/browser/eventlist.pt:50
+msgid "sort_by_start_date"
+msgstr ""
+
 #: src/iwwb/eventlist/browser/eventlist.pt:50
 msgid "Start date"
 msgstr ""
 
+#. Default: Sort by training supplier
+#: src/iwwb/eventlist/browser/eventlist.pt:51
+msgid "sort_by_training_supplier"
+msgstr ""
+
 #: src/iwwb/eventlist/browser/eventlist.pt:51
 msgid "Training Supplier"
+msgstr ""
+
+#: src/iwwb/eventlist/browser/eventlist.pt:77
+#: src/iwwb/eventlist/browser/eventlist.py:85
+msgid "No events found."
 msgstr ""
 
 #: src/iwwb/eventlist/browser/eventlist.py:26
@@ -205,9 +240,5 @@ msgstr ""
 
 #: src/iwwb/eventlist/browser/eventlist.py:41
 msgid "Reset"
-msgstr ""
-
-#: src/iwwb/eventlist/browser/eventlist.py:85
-msgid "No events found."
 msgstr ""
 
