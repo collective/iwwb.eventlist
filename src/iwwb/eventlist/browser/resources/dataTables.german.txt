@@ -6,7 +6,7 @@
     "sInfoEmpty":    "0 Einträge",
     "sInfoFiltered": "(gefiltert von _MAX_ Einträgen)",
     "sInfoPostFix":  "",
-    "sSearch":       "Suchen",
+    "sSearch":       "Suche weiter einschränken",
     "sUrl":          "",
     "oPaginate": {
         "sFirst":    "Erster",
