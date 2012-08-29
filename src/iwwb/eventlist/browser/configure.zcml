@@ -7,7 +7,7 @@
   <!-- Register the view for listing events  -->
   <browser:page
     name="eventlist"
-    for="plone.app.layout.navigation.interfaces.INavigationRoot"
+    for="plone.folder.interfaces.IFolder"
     class=".eventlist.ListEventsView"
     permission="zope2.View"
     layer="iwwb.eventlist.interfaces.IIWWBEventlistLayer"
