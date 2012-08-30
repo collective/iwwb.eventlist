@@ -6,6 +6,7 @@ from iwwb.eventlist import _
 from iwwb.eventlist.interfaces import IIWWBSearcher
 from iwwb.eventlist.interfaces import IListEventsForm
 from iwwb.eventlist.interfaces import IWWB_SEARCHABLE_FIELDS
+from plone.formwidget.datetime.z3cform import DateFieldWidget
 from plone.z3cform.layout import FormWrapper
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.statusmessages.interfaces import IStatusMessage
@@ -23,6 +24,7 @@ logger = logging.getLogger('iwwb.eventlist')
 class ListEventsForm(form.Form):
     """The List Events search form based on z3c.form."""
     fields = field.Fields(IListEventsForm)
+    fields['startMonth'].widgetFactory = DateFieldWidget
     label = _(u"List Events")
 
     # don't try to read Plone root for form fields data, this is only mostly

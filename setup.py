@@ -40,6 +40,7 @@ setup(name='iwwb.eventlist',
           'setuptools',
           'suds',
           'z3c.form',
+          'plone.formwidget.datetime',
       ],
       extras_require={
           # list libs needed for unittesting this project
