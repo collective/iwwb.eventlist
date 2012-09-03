@@ -24,7 +24,7 @@ logger = logging.getLogger('iwwb.eventlist')
 class ListEventsForm(form.Form):
     """The List Events search form based on z3c.form."""
     fields = field.Fields(IListEventsForm)
-    fields['startMonth'].widgetFactory = DateFieldWidget
+    fields['startDate'].widgetFactory = DateFieldWidget
     label = _(u"List Events")
 
     # don't try to read Plone root for form fields data, this is only mostly
@@ -117,7 +117,7 @@ class ListEventsView(FormWrapper):
                     # If no operator is specified it searches for all the
                     # words (XXX: OR operator doesn't work as expected?)
                     querydict[field] = words
-            elif field == 'startMonth':
+            elif field == 'startDate':
                 year = self.request.form.get('form.widgets.%s-year' % field)
                 month = self.request.form.get('form.widgets.%s-month' % field)
                 day = self.request.form.get('form.widgets.%s-day' % field) or '1'

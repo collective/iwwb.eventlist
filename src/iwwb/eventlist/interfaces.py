@@ -29,16 +29,16 @@ class IListEventsForm(Interface):
             'Berlin, etc.'),
         required=False,
     )
-    startMonth = schema.Date(
+    startDate = schema.Date(
         title=_(u'Course Start'),
-        description=_(u'Select the month where the course should start'),
+        description=_(u'Select the date when the course should start'),
         required=False,
         default=date.today(),
         constraint=check_year_constraint,
     )
     zipcity = schema.TextLine(
         title=_(u'Zip or City'),
-        description=_(u'Enter the zip code or city.' ),
+        description=_(u'Enter the zip code or city.'),
         required=False,
     )
     type = schema.Choice(
@@ -60,10 +60,10 @@ class IListEventsForm(Interface):
     def check_enough_data_provided(obj):
         """Check that the user has provided enough data to perform the query.
         """
-        if not (obj.query or obj.zipcity or obj.startMonth or obj.county):
+        if not (obj.query or obj.zipcity or obj.startDate or obj.county):
             raise Invalid(_("You have to fill out at least one of required " \
                 "fields: Keywords, Zip code or city, Event Start, County"))
 
 
 IWWB_SEARCHABLE_FIELDS = (
-    'query', 'county', 'zipcity', 'startMonth', 'type', 'sort',)
+    'query', 'county', 'zipcity', 'startDate', 'type', 'sort',)
