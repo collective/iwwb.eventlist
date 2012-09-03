@@ -7,6 +7,7 @@ from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
 
+
 class CountiesVocabulary(object):
     """ Counties """
     implements(IVocabularyFactory)
@@ -37,7 +38,7 @@ class CountiesVocabulary(object):
         return SimpleVocabulary(items)
 
 CountiesVocabularyFactory = CountiesVocabulary()
-    
+
 
 class EventTypesVocabulary(object):
     """Vocabulary factory for event types."""

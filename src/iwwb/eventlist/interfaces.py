@@ -2,7 +2,6 @@
 """Module where all interfaces, events and exceptions live."""
 
 from datetime import date
-from datetime import timedelta
 from iwwb.eventlist import _
 from iwwb.eventlist import check_year_constraint
 from plone.theme.interfaces import IDefaultPloneLayer
@@ -26,7 +25,7 @@ class IListEventsForm(Interface):
     """Field definition for List Events form."""
     query = schema.TextLine(
         title=_(u'Keywords'),
-        description=_(u'Enter the search keywords. Examples: Seminar, Excel, ' \
+        description=_(u'Enter the search keywords. Examples: Seminar, Excel, '
             'Berlin, etc.'),
         required=False,
     )
@@ -85,27 +84,28 @@ class IListEventsForm(Interface):
     )
 
     # Doesn't work ATM
-    #===========================================================================
+    #=========================================================================
     # allWords = schema.Bool(
     #    title=_(u'All keywords'),
     #    description=_(u'Select this if you want to search for all keywords.'),
     #    required=False,
     # )
-    #===========================================================================
+    #=========================================================================
 
     # Doesn't work ATM
-    #===========================================================================
+    #=========================================================================
     # sort = schema.Choice(
     #    title=_(u'Sort by'),
     #    vocabulary='iwwb.eventlist.vocabularies.SortOptions',
     #    required=True,
     #    default='startTime',
     # )
-    #===========================================================================
+    #=========================================================================
 
     @invariant
     def check_enough_data_provided(obj):
-        """Check that the user has provided enough data to perform the query."""
+        """Check that the user has provided enough data to perform the query.
+        """
         if not (obj.query or obj.zipcity or obj.startMonth or obj.county):
             raise Invalid(_("You have to fill out at least one of required " \
                 "fields: Keywords, Zip code or city, Event Start, County"))
@@ -116,4 +116,5 @@ class IListEventsForm(Interface):
     #        raise Invalid(_("End date must be smaller than start date"))
     #    return True
 
-IWWB_SEARCHABLE_FIELDS = ('query', 'county', 'zipcity', 'startMonth', 'type', 'sort',)
+IWWB_SEARCHABLE_FIELDS = (
+    'query', 'county', 'zipcity', 'startMonth', 'type', 'sort',)

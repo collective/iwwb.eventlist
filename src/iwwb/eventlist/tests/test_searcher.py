@@ -6,7 +6,6 @@ from iwwb.eventlist.interfaces import IIWWBSearcher
 from zope.component import getUtility
 
 import mock
-import suds
 import unittest2 as unittest
 
 

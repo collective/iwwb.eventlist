@@ -79,12 +79,14 @@ class ListEventsView(FormWrapper):
             if querydict:
                 results = searcher.get_results(querydict)
         except:
-            IStatusMessage(self.request).addStatusMessage(u"An error occured while fetching " \
-                "results. Please try again later.", type="error")
+            IStatusMessage(self.request).addStatusMessage(
+                u"An error occured while fetching results. Please try again "
+                "later.", type="error")
             logger.exception('Error fetching results')
 
         if not results:
-            IStatusMessage(self.request).addStatusMessage(_('No events found.'), type="info")
+            IStatusMessage(self.request).addStatusMessage(
+                _('No events found.'), type="info")
 
         return results
 

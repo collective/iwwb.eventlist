@@ -90,7 +90,7 @@ class ProxyView(BrowserView):
             logger.error("Server did not return HTTP 200 when calling "
                          "remote proxy URL:" + url)
             for key, value in params.items():
-                logger.error(key + ": "  + value)
+                logger.error(key + ": " + value)
 
             # Print the server-side stack trace / error page
             logger.error(e.read())
