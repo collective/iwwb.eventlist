@@ -29,6 +29,13 @@ class IListEventsForm(Interface):
             'Berlin, etc.'),
         required=False,
     )
+    allwords = schema.Bool(
+        title=_(u'All words'),
+        description=_(u'If you tick this checkbox, only courses that match '
+            'all keywords you enter will be displayed.'),
+        required=False,
+        default=False,
+    )
     startDate = schema.Date(
         title=_(u'Course Start'),
         description=_(u'Select the date when the course should start'),

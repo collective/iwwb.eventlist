@@ -109,14 +109,10 @@ class ListEventsView(FormWrapper):
                 value = self.request.get('form.widgets.query')
                 if not value:
                     continue
-                words = value.split()
-                search_all_words = self.request.get('form.widgets.allWords')
+                search_all_words = self.request.get('form.widgets.allwords')
                 if search_all_words:
-                    querydict[field] = u" AND ".join(words)
-                else:
-                    # If no operator is specified it searches for all the
-                    # words (XXX: OR operator doesn't work as expected?)
-                    querydict[field] = words
+                    querydict['bool'] = 'AND'
+                querydict[field] = value
             elif field == 'startDate':
                 year = self.request.form.get('form.widgets.%s-year' % field)
                 month = self.request.form.get('form.widgets.%s-month' % field)
