@@ -140,7 +140,7 @@ class ListEventsView(FormWrapper):
                 # should have list-type values
                 if type(value) == list:
                     value = value[0]
-                if value and value != 'alle':
+                if value and value not in ('alle', '--NOVALUE--'):
                     querydict['bundesland'] = COUNTIES[value]
             else:
                 value = self.request.get('form.widgets.%s' % field)
