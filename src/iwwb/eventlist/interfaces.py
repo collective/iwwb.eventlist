@@ -43,6 +43,14 @@ class IListEventsForm(Interface):
         default=date.today(),
         constraint=check_year_constraint,
     )
+    county = schema.Choice(
+        title=_(u'County'),
+        description=_(u'By selecting a county you can limit the courses found '
+            'to those that take place in that county.'),
+        vocabulary='iwwb.eventlist.vocabularies.Counties',
+        required=False,
+        default='alle',
+    )
     zipcity = schema.TextLine(
         title=_(u'Zip or City'),
         description=_(u'Enter the zip code or city.'),
@@ -52,7 +60,7 @@ class IListEventsForm(Interface):
         title=_(u'Event type'),
         description=_(u'Select the event type.'),
         vocabulary='iwwb.eventlist.vocabularies.EventTypes',
-        required=True,
+        required=False,
         default=0,
     )
     startTimeRequired = schema.Bool(

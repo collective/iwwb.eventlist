@@ -6,6 +6,7 @@ from iwwb.eventlist import _
 from iwwb.eventlist.interfaces import IIWWBSearcher
 from iwwb.eventlist.interfaces import IListEventsForm
 from iwwb.eventlist.interfaces import IWWB_SEARCHABLE_FIELDS
+from iwwb.eventlist.vocabularies import COUNTIES
 from plone.formwidget.datetime.z3cform import DateFieldWidget
 from plone.z3cform.layout import FormWrapper
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
@@ -133,6 +134,14 @@ class ListEventsView(FormWrapper):
                     querydict['zip'] = int(value)
                 else:
                     querydict['city'] = value
+            elif field == 'county':
+                value = self.request.get('form.widgets.%s' % field, '')
+                # I have no idea why, but the FormWrapper thinks Choice fields
+                # should have list-type values
+                if type(value) == list:
+                    value = value[0]
+                if value and value != 'alle':
+                    querydict['bundesland'] = COUNTIES[value]
             else:
                 value = self.request.get('form.widgets.%s' % field)
                 if not value:

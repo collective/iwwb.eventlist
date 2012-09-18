@@ -8,32 +8,43 @@ from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
 
 
+COUNTIES = dict(
+    alle=u'alle',
+    baw=u'Baden-Württemberg',
+    bay=u'Bayern',
+    bln=u'Berlin',
+    bra=u'Brandenburg',
+    bre=u'Bremen',
+    hh=u'Hamburg',
+    hes=u'Hessen',
+    mvp=u'Mecklenburg-Vorpommern',
+    nds=u'Niedersachsen',
+    nrw=u'Nordrhein-Westfalen',
+    rpf=u'Rheinland-Pfalz',
+    saa=u'Saarland',
+    sac=u'Sachsen',
+    san=u'Sachsen-Anhalt',
+    slh=u'Schleswig-Holstein',
+    thu=u'Thüringen',
+)
+
 class CountiesVocabulary(object):
     """ Counties """
     implements(IVocabularyFactory)
 
     def __call__(self, context):
         """Build a vocabulary of counties.
+           zope.schema.vocabulary is really stupid, because it needs a string
+           as token, and can't work with unicode (though technically it could).
+           Since WSDL's GetFullResult takes a county's full name, and some of
+           them contain umlauts, we need to keep a mapping of abbr to name for
+           the counties, and make the replacement when we create the query.
         """
-        items = [
-            SimpleTerm('alle', 'alle', _(u'alle')),
-            SimpleTerm('baw', 'baw', _(u'Baden-Württemberg')),
-            SimpleTerm('bay', 'bay', _(u'Bayern')),
-            SimpleTerm('bln', 'bln', _(u'Berlin')),
-            SimpleTerm('bra', 'bra', _(u'Brandenburg')),
-            SimpleTerm('bre', 'bre', _(u'Bremen')),
-            SimpleTerm('hh', 'hh', _(u'Hamburg')),
-            SimpleTerm('hes', 'hes', _(u'Hessen')),
-            SimpleTerm('mvp', 'mvp', _(u'Mecklenburg-Vorpommern')),
-            SimpleTerm('nds', 'nds', _(u'Niedersachsen')),
-            SimpleTerm('nrw', 'nrw', _(u'Nordrhein-Westfalen')),
-            SimpleTerm('rpf', 'rpf', _(u'Rheinland-Pfalz')),
-            SimpleTerm('saa', 'saa', _(u'Saarland')),
-            SimpleTerm('sac', 'sac', _(u'Sachsen')),
-            SimpleTerm('san', 'san', _(u'Sachsen-Anhalt')),
-            SimpleTerm('slh', 'slh', _(u'Schleswig-Holstein')),
-            SimpleTerm('thu', 'thu', _(u'Thüringen')),
-        ]
+        items = list()
+        keys = COUNTIES.keys()
+        keys.sort()
+        for key in keys:
+            items.append(SimpleTerm(key, key, _(COUNTIES[key])))
 
         return SimpleVocabulary(items)
 
