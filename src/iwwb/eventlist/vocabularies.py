@@ -44,7 +44,7 @@ class CountiesVocabulary(object):
         keys = COUNTIES.keys()
         keys.sort()
         for key in keys:
-            items.append(SimpleTerm(key, key, _(COUNTIES[key])))
+            items.append(SimpleTerm(key, key, COUNTIES[key]))
 
         return SimpleVocabulary(items)
 
