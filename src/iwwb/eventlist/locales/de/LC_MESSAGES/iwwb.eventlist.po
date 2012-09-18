@@ -44,7 +44,9 @@ msgstr "Start der Weiterbildung"
 
 #: src/iwwb/eventlist/interfaces.py:41
 msgid "Select the date when the course should start"
-msgstr ""
+msgstr "Hier können Sie ein Beginndatum eingeben (ist i.d.R. nur bei "
+"Seminaren sinnvoll). Ohne Eingabe werden alle Angebote angezeigt, die ab "
+"dem heutigem Datum beginnen."
 
 #: src/iwwb/eventlist/interfaces.py:47
 msgid "County"
