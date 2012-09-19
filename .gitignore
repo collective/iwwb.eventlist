@@ -12,4 +12,4 @@ var
 *.pyo
 *.egg-info
 *.mo
-
+*~
