@@ -32,6 +32,19 @@ class ListEventsForm(form.Form):
     # usable for edit forms, where you have an actual context
     ignoreContext = True
 
+    def updateWidgets(self):
+        """Move fields' descriptions to title attrs of HTML form elements.
+
+        This way fields' descriptions are displayed as tooltip text, making
+        the UI a bit more classy.
+        """
+        super(ListEventsForm, self).updateWidgets()
+
+        for name, widget in self.widgets.items():
+            desc = widget.field.description
+            widget.title = desc
+            widget.field.description = u""
+
     @button.buttonAndHandler(_(u"List Events"))
     def list_events(self, action):
         """Submit button handler."""
