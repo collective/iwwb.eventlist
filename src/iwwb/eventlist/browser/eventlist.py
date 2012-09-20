@@ -37,13 +37,17 @@ class ListEventsForm(form.Form):
 
         This way fields' descriptions are displayed as tooltip text, making
         the UI a bit more classy.
+
+        Also, set a custom widget template for the zipcity field that displays
+        a link to the zip code picker.
         """
         super(ListEventsForm, self).updateWidgets()
-
         for name, widget in self.widgets.items():
             desc = widget.field.description
             widget.title = desc
             widget.field.description = u""
+
+        self.widgets['zipcity'].template = ViewPageTemplateFile("zipcode.pt")
 
     @button.buttonAndHandler(_(u"List Events"))
     def list_events(self, action):
