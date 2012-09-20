@@ -44,9 +44,9 @@
             if (sValue.indexOf('<a') !== -1) {
                 var jsValue = $(sValue);
                 return jsValue.text() + ', ' + jsValue.attr('href');
-            } else {
-                return sValue;
             }
+
+            return sValue;
         };
 
         $("#example").dataTable({
@@ -110,15 +110,15 @@
 }(jQuery));
 
 
-/*global document, jQuery */
+/* code for the overlay containing area code picker */
 (function ($) {
     "use strict";
 
-    var currCodes = [],   //list of currently selected area codes
-        $txtCodes;        //textarea displaying currently selected area codes
+    var currCodes = [],   // list of currently selected area codes
+        $txtCodes;        // textarea displaying currently selected area codes
 
-    //If area code has already been selected, remove it from the list,
-    //otherwise add it. Update textarea content at the end.
+    // If area code has already been selected, remove it from the list,
+    // otherwise add it. Update textarea content at the end.
     function areaClicked(code) {
         var idx = $.inArray(code, currCodes);
 
@@ -135,7 +135,7 @@
     $(document).ready(function () {
         $txtCodes = $("#txtCodes");
 
-        //set onclick handlers for all area elements
+        // set onclick handlers for all area elements
         $("#germany_map area").each(function () {
             var code = $(this).attr("alt").split(" ")[1];
 
@@ -143,6 +143,24 @@
                 event.preventDefault();
                 areaClicked(code);
             });
+        });
+
+        // init area code picker overlay
+        $("#zipcode-trigger").overlay({
+            top: -145,
+            closeOnClick: false,
+            close: "#btnCancel, #overlay-zipcode .close",
+
+            onBeforeLoad: function () {
+                // reset area codes list
+                currCodes = [];
+                $txtCodes.val(currCodes.join(", "));
+            }
+        });
+
+        $("#btnDone").click(function () {
+            $("#form-widgets-zipcity").val(currCodes.join(", "));
+            $("#zipcode-trigger").data("overlay").close();
         });
     });
 

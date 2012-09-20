@@ -63,7 +63,12 @@
 }
 
 #overlay-zipcode {
-    border: 1px solid red;
+    width: 850px;
+    height: 810px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 0 0 4px 1px black;
 }
 
 #overlay-zipcode img {
@@ -72,9 +77,12 @@
 
 #overlay-zipcode textarea {
     width: 200px;
+}
+
+#overlay-zipcode form {
     margin-top: 250px;
 }
 
 #germany_map area {
-cursor: pointer;
+    cursor: pointer;
 }
