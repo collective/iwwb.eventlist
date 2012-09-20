@@ -61,3 +61,20 @@
 .template-eventlist .content-wrap #content dd {
     margin-bottom: 0;
 }
+
+#overlay-zipcode {
+    border: 1px solid red;
+}
+
+#overlay-zipcode img {
+    float: left;
+}
+
+#overlay-zipcode textarea {
+    width: 200px;
+    margin-top: 250px;
+}
+
+#germany_map area {
+cursor: pointer;
+}
