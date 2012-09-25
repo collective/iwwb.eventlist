@@ -147,7 +147,7 @@
 
         // init area code picker overlay
         $("#zipcode-trigger").overlay({
-            top: -145,
+            top: 0,
             closeOnClick: false,
             close: "#btnCancel, #overlay-zipcode .close",
 
