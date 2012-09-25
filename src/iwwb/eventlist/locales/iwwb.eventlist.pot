@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: iwwb.eventlist 0.1\n"
 "Report-Msgid-Bugs-To: thomas@syslab.com\n"
-"POT-Creation-Date: 2012-09-25 14:27+0200\n"
+"POT-Creation-Date: 2012-09-25 14:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -183,6 +183,14 @@ msgstr ""
 #: src/iwwb/eventlist/browser/eventlist.pt:77
 #: src/iwwb/eventlist/browser/eventlist.py:107
 msgid "No events found."
+msgstr ""
+
+#: src/iwwb/eventlist/browser/eventlist.pt:192
+msgid "Done"
+msgstr ""
+
+#: src/iwwb/eventlist/browser/eventlist.pt:193
+msgid "Cancel"
 msgstr ""
 
 #: src/iwwb/eventlist/browser/eventlist.py:29
