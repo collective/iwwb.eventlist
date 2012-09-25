@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: thomas@syslab.com\n"
-"POT-Creation-Date: 2012-09-18 13:50+0200\n"
+"POT-Creation-Date: 2012-09-25 14:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,8 +35,9 @@ msgstr "Alle Wörter"
 msgid ""
 "If you tick this checkbox, only courses that match all keywords you enter "
 "will be displayed."
-msgstr "Wenn diese Checkbox markiert ist, werden nur Angebote gefunden werden,"
-" in denen alle Suchwörter vorkommen."
+msgstr ""
+"Wenn diese Checkbox markiert ist, werden nur Angebote gefunden werden, in "
+"denen alle Suchwörter vorkommen."
 
 #: src/iwwb/eventlist/interfaces.py:40
 msgid "Course Start"
@@ -44,9 +45,10 @@ msgstr "Start der Weiterbildung"
 
 #: src/iwwb/eventlist/interfaces.py:41
 msgid "Select the date when the course should start"
-msgstr "Hier können Sie ein Beginndatum eingeben (ist i.d.R. nur bei "
-"Seminaren sinnvoll). Ohne Eingabe werden alle Angebote angezeigt, die ab "
-"dem heutigem Datum beginnen."
+msgstr ""
+"Hier können Sie ein Beginndatum eingeben (ist i.d.R. nur bei Seminaren "
+"sinnvoll). Ohne Eingabe werden alle Angebote angezeigt, die ab dem heutigem "
+"Datum beginnen."
 
 #: src/iwwb/eventlist/interfaces.py:47
 msgid "County"
@@ -56,7 +58,8 @@ msgstr "Bundesland"
 msgid ""
 "By selecting a county you can limit the courses found to those that take "
 "place in that county."
-msgstr "Durch Auswahl eines Bundeslandes können Sie die Suche auf Angebote "
+msgstr ""
+"Durch Auswahl eines Bundeslandes können Sie die Suche auf Angebote "
 "begrenzen, die in diesem Bundesland stattfinden."
 
 #: src/iwwb/eventlist/interfaces.py:55
@@ -186,15 +189,28 @@ msgid "Training Supplier"
 msgstr "Anbieter"
 
 #: src/iwwb/eventlist/browser/eventlist.pt:77
-#: src/iwwb/eventlist/browser/eventlist.py:90
+#: src/iwwb/eventlist/browser/eventlist.py:107
 msgid "No events found."
 msgstr "Keine Angebote gefunden"
 
 #: src/iwwb/eventlist/browser/eventlist.py:29
-#: src/iwwb/eventlist/browser/eventlist.py:35
+#: src/iwwb/eventlist/browser/eventlist.py:52
 msgid "List Events"
 msgstr "Kurse anzeigen"
 
-#: src/iwwb/eventlist/browser/eventlist.py:44
+#: src/iwwb/eventlist/browser/eventlist.py:61
 msgid "Reset"
 msgstr "Zurücksetzen"
+
+#. Default: A map of Germany will be shown that lets you pick one or more ZIP-code
+#. regions.
+#: src/iwwb/eventlist/browser/zipcode.pt:36
+msgid "description_zip_picker"
+msgstr ""
+"Es wird eine Karte von Deutschland angezeigt, mit der Sie einen oder mehrere "
+"Postleitzahlbereiche auswählen können."
+
+#. Default: Chose ZIP-code area
+#: src/iwwb/eventlist/browser/zipcode.pt:39
+msgid "label_zip_picker"
+msgstr "PLZ-Bereich wählen"

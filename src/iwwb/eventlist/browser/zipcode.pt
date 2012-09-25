@@ -1,5 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
+      i18n:domain="iwwb.eventlist"
       tal:omit-tag="">
     <input id="" name="" class="" title="" lang="" disabled=""
            readonly="" alt="" tabindex="" accesskey="" size="" maxlength=""
@@ -33,7 +34,8 @@
                            size view/size;
                            maxlength view/maxlength" />
     <a href="#" rel="#overlay-zipcode" id="zipcode-trigger"
-       title="Click to open ZIP code picker">
-      &rarr; PLZ-Bereich wählen
+       title="A map of Germany will be shown that lets you pick one or more ZIP-code regions."
+        i18n:attributes="title description_zip_picker">
+      &rarr; <span i18n:translate="label_zip_picker" tal:omit-tag="">Chose ZIP-code area</span>
     </a>
 </html>
