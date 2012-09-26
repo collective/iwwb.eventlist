@@ -43,9 +43,7 @@ class ListEventsForm(form.Form):
         """
         super(ListEventsForm, self).updateWidgets()
         for name, widget in self.widgets.items():
-            desc = widget.field.description
-            widget.title = desc
-            widget.field.description = u""
+            widget.title = widget.field.description
 
         self.widgets['zipcity'].template = ViewPageTemplateFile("zipcode.pt")
 
