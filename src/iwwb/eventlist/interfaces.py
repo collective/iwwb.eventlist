@@ -34,7 +34,7 @@ class IListEventsForm(Interface):
         description=_(u'If you tick this checkbox, only courses that match '
             'all keywords you enter will be displayed.'),
         required=False,
-        default=False,
+        default=True,
     )
     startDate = schema.Date(
         title=_(u'Course Start'),
