@@ -25,7 +25,7 @@ msgstr "Suchwort(e)"
 
 #: src/iwwb/eventlist/interfaces.py:28
 msgid "Enter the search keywords. Examples: Seminar, Excel, Berlin, etc."
-msgstr "Suchwort(e) eingeben, z. B. Seminar, Excel, Berlin, etc."
+msgstr "Suchwort(e) eingeben, z. B. Gefahrstoffe, Gefährdungsbeurteilung, usw."
 
 #: src/iwwb/eventlist/interfaces.py:33
 msgid "All words"
