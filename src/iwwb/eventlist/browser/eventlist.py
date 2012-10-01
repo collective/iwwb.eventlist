@@ -87,8 +87,9 @@ class ListEventsView(FormWrapper):
         """Get the events for the provided parameters using the IIWWBSearcher
         utility.
         """
-        if self.form.formErrorsMessage:
-            return []  # don't do anything if there were validation errors
+        # Too general, there always seems to be an error
+        #if self.form.formErrorsMessage:
+        #    return []  # don't do anything if there were validation errors
 
         querydict = self._construct_query()
         results = []
