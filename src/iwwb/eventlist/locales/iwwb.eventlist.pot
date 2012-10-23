@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: iwwb.eventlist 0.1\n"
 "Report-Msgid-Bugs-To: thomas@syslab.com\n"
-"POT-Creation-Date: 2012-09-25 14:41+0200\n"
+"POT-Creation-Date: 2012-10-23 18:04+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -84,6 +84,11 @@ msgstr ""
 msgid ""
 "You have to fill out at least one of required fields: Keywords, Zip code or "
 "city, Event Start, County"
+msgstr ""
+
+#. Default: No selection
+#: src/iwwb/eventlist/vocabularies.py:12
+msgid "no_selection"
 msgstr ""
 
 #: src/iwwb/eventlist/vocabularies.py:62
@@ -181,7 +186,7 @@ msgid "Training Supplier"
 msgstr ""
 
 #: src/iwwb/eventlist/browser/eventlist.pt:77
-#: src/iwwb/eventlist/browser/eventlist.py:107
+#: src/iwwb/eventlist/browser/eventlist.py:108
 msgid "No events found."
 msgstr ""
 
@@ -194,11 +199,11 @@ msgid "Cancel"
 msgstr ""
 
 #: src/iwwb/eventlist/browser/eventlist.py:29
-#: src/iwwb/eventlist/browser/eventlist.py:52
+#: src/iwwb/eventlist/browser/eventlist.py:50
 msgid "List Events"
 msgstr ""
 
-#: src/iwwb/eventlist/browser/eventlist.py:61
+#: src/iwwb/eventlist/browser/eventlist.py:59
 msgid "Reset"
 msgstr ""
 
