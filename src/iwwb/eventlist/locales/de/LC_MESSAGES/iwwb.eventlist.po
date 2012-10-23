@@ -21,7 +21,7 @@ msgstr "Das eingegebene Jahr ist ungültig."
 
 #: src/iwwb/eventlist/interfaces.py:27
 msgid "Keywords"
-msgstr "Suchwort(e)"
+msgstr "Freitextsuche"
 
 #: src/iwwb/eventlist/interfaces.py:28
 msgid "Enter the search keywords. Examples: Seminar, Excel, Berlin, etc."
