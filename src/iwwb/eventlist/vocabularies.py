@@ -9,7 +9,7 @@ from zope.schema.vocabulary import SimpleVocabulary
 
 
 COUNTIES = dict(
-    alle=u'alle',
+    alle=u'Keine Einschränkung',
     baw=u'Baden-Württemberg',
     bay=u'Bayern',
     bln=u'Berlin',
