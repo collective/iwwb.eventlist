@@ -11,6 +11,8 @@ Iwwb Eventlist
 
 .. topic:: Summary
 
-    One or two sentences about the project.
+   This package provides a Plone interface to the event search offered by http://www.iwwb.de/. 
+   It makes use of their web interfaces described at http://www.iwwb.de/wss/sucheIWWBServer.php 
 
-Additional more info about the projects' background, rationale, etc.
+This package will be useful mostly to German users, as it explicitly targets a German site.
+
