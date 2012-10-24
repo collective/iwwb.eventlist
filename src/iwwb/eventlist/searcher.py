@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Module for communicating with the IWWB web service."""
 
+import HTMLParser
 from iwwb.eventlist.interfaces import IIWWBSearcher
 from suds.client import Client
 from zope.interface import implements
@@ -8,12 +9,17 @@ from zope.interface import implements
 import logging
 
 logger = logging.getLogger('iwwb.eventlist')
+html_parser = HTMLParser.HTMLParser()
 
 WSDL_URL = 'http://www.iwwb.de/wss/sucheIWWBServer.php?wsdl'
 
 # Set maximum results to a low number, otherwise the search takes too long
 RESULTS_PER_PAGE = 1000
 MAX_RESULTS = 1000
+
+# Some values might contain HTML entities that need to be escaped
+KEYS_TO_ESCAPE = ['Name', 'Street', 'City', 'Title', 'DatabaseSupplier',
+    'TrainingSupplier']
 
 
 class IWWBSearcher(object):
@@ -71,4 +77,8 @@ class IWWBSearcher(object):
         if not results_array.SearchResults:
             return []
 
-        return [res for res in results_array.SearchResults.SearchResult]
+        results = [res for res in results_array.SearchResults.SearchResult]
+        for res in results:
+            [setattr(res, key, html_parser.unescape(getattr(res, key, '')))
+                for key in KEYS_TO_ESCAPE]
+        return results

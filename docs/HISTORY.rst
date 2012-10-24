@@ -5,12 +5,10 @@ Changelog
 0.2 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
+- Unescape HTML entities in the results [thomasw]
 
 0.1 (2012-10-23)
 ----------------
 
 - Initial release.
-  [thomasw]
-
+  [jure, plamut, thomasw]
