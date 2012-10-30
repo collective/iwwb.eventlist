@@ -40,7 +40,10 @@ class ListEventsForm(form.Form):
 
         Also, set a custom widget template for the zipcity field that displays
         a link to the zip code picker.
+        And set the default date of startDate to today. Necessary, since the
+        setting done in the schema will stay on the day Zope was started.
         """
+        self.fields['startDate'].field.default = date.today()
         super(ListEventsForm, self).updateWidgets()
         for name, widget in self.widgets.items():
             widget.title = widget.field.description
