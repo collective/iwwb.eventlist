@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-0.2.1 (unreleased)
+0.2.1 (2012-10-31)
 ------------------
 
 - Minor correction in the docs [pysailor] 
