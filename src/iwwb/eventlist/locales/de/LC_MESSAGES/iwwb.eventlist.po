@@ -41,7 +41,7 @@ msgstr ""
 
 #: src/iwwb/eventlist/interfaces.py:40
 msgid "Course Start"
-msgstr "Start der Weiterbildung"
+msgstr "Beginndatum ab"
 
 #: src/iwwb/eventlist/interfaces.py:41
 msgid "Select the date when the course should start"
