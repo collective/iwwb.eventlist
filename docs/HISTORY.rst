@@ -6,6 +6,8 @@ Changelog
 ------------------
 
 - Minor correction in the docs [pysailor] 
+- Added EU-date sorting for the results, credits to http://datatables.net/plug-ins/sorting,
+  author: Robert Sedovsek [pysailor]
 
 
 0.2 (2012-10-30)
