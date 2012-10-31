@@ -12,6 +12,54 @@
  *
  */
 /*global document, jQuery, portal_url, pb */
+
+/* date-eu sorting taken from http://datatables.net/plug-ins/sorting
+Author:  Robert Sedovsek
+*/
+
+jQuery.extend( jQuery.fn.dataTableExt.oSort, {
+    "date-eu-pre": function ( date ) {
+        var date = date.replace(" ", "");
+          
+        if (date.indexOf('.') > 0) {
+            /*date a, format dd.mn.(yyyy) ; (year is optional)*/
+            var eu_date = date.split('.');
+        } else {
+            /*date a, format dd/mn/(yyyy) ; (year is optional)*/
+            var eu_date = date.split('/');
+        }
+          
+        /*year (optional)*/
+        if (eu_date[2]) {
+            var year = eu_date[2];
+        } else {
+            var year = 0;
+        }
+          
+        /*month*/
+        var month = eu_date[1];
+        if (month.length == 1) {
+            month = 0+month;
+        }
+          
+        /*day*/
+        var day = eu_date[0];
+        if (day.length == 1) {
+            day = 0+day;
+        }
+          
+        return (year + month + day) * 1;
+    },
+ 
+    "date-eu-asc": function ( a, b ) {
+        return ((a < b) ? -1 : ((a > b) ? 1 : 0));
+    },
+ 
+    "date-eu-desc": function ( a, b ) {
+        return ((a < b) ? 1 : ((a > b) ? -1 : 0));
+    }
+} );
+
 (function ($) {
     "use strict";
 
@@ -49,9 +97,19 @@
             return sValue;
         };
 
+        var selected_language = jQuery('#selected_language').attr('selected_language');
+        var date_sType = (selected_language=='de' ? {"sType": "date-eu"} : null);
         $("#example").dataTable({
             oLanguage: {"sUrl": "/++resource++iwwb.eventlist/dataTables.german.txt"},
             sDom: '<"num-results"i><"pagination"p>t<"clear">lfrT', // where in DOM to inject TableTools controls
+            "aoColumns": [
+                null,
+                null,
+                null,
+                null,
+                date_sType,
+                null
+                ],
             "aaSorting": [[ 4, "asc" ]],
             oTableTools: {
                 sSwfPath: portal_url + "/++resource++jquery.datatables/extras/TableTools/media/swf/copy_cvs_xls.swf",
