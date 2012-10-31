@@ -27,3 +27,4 @@ Changelog
 
 - Initial release.
   [jcerjak, plamut, zupo, pysailor]
+

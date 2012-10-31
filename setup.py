@@ -15,7 +15,8 @@ version = read('src', 'iwwb', 'eventlist', 'version.txt').strip()
 
 setup(name='iwwb.eventlist',
       version=version,
-      description="Enter description of what this project is all about.",
+      description="Provides a Plone interface for accessing the event search of "
+          "InfoWeb Weiterbildung",
       long_description=read('docs', 'README.rst') +
                        read('docs', 'HISTORY.rst') +
                        read('docs', 'LICENSE.rst'),
