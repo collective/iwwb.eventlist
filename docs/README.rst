@@ -16,4 +16,4 @@ Iwwb Eventlist
 
 This package will be useful mostly to German users, as it explicitly targets a German site.
 
-An example of where this package is used (with further UI customizations) can be seen on the German site `gefaehrdungsbeurteilung.de <http://www.gefaehrdungsbeurteilung.de/de/service/fort-und-weiterbildungsangebote>_.
+An example of where this package is used (with further UI customizations) can be seen on the German site `gefaehrdungsbeurteilung.de <http://www.gefaehrdungsbeurteilung.de/de/service/fort-und-weiterbildungsangebote>`_.
