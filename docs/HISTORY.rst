@@ -17,4 +17,4 @@ Changelog
 ----------------
 
 - Initial release.
-  [jure, plamut, pysailor]
+  [jcerjak, plamut, zupo, pysailor]
