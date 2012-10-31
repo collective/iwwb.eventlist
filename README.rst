@@ -1,1 +1,1 @@
-See `docs/README.rst <https://github.com/niteoweb/iwwb.eventlist/blob/master/docs/README.rst>`_.
+See `docs/README.rst <https://github.com/collective/iwwb.eventlist/blob/master/docs/README.rst>`_.

@@ -6,7 +6,7 @@ Iwwb Eventlist
 :Author: NiteoWeb Ltd.
 :URL: http://www.iwwb.de/
 :Docs: http://readthedocs.org/iwwbeventlist
-:Source: https://github.com/niteoweb/iwwb.eventlist
+:Source: https://github.com/collective/iwwb.eventlist
 :Framework: Plone 4.1
 
 .. topic:: Summary
