@@ -20,6 +20,9 @@ Author:  Robert Sedovsek
 jQuery.extend( jQuery.fn.dataTableExt.oSort, {
     "date-eu-pre": function ( date ) {
         var date = date.replace(" ", "");
+        if (date.trim() == "") {
+            return 0;
+        }
 
         if (date.indexOf('.') > 0) {
             /*date a, format dd.mn.(yyyy) ; (year is optional)*/

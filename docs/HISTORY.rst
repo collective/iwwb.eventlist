@@ -5,7 +5,7 @@ Changelog
 0.2.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- When sorting by date, don't choke on empty date [pysailor]
 
 
 0.2.1 (2012-10-31)
