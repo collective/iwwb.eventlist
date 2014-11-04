@@ -11,7 +11,7 @@ import os
 def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
-version = read('src', 'iwwb', 'eventlist', 'version.txt').strip()
+version = "0.2.2"
 
 setup(name='iwwb.eventlist',
       version=version,
