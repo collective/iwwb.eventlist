@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-0.2.2 (unreleased)
+0.2.2 (2014-11-04)
 ------------------
 
 - When sorting by date, don't choke on empty date [pysailor]
